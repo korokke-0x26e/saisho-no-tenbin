@@ -1,0 +1,1653 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0d1611">
+<title>宰相の天秤 〜十六年の国家予算〜</title>
+<style>
+:root{
+  --bg:#0c1510;--bg2:#122019;--panel:#16261d;--panel2:#1c3125;
+  --gold:#c9a24a;--gold2:#ecd08a;--gold3:#8a6a26;
+  --ink:#f0e8d3;--muted:#a59d86;--dim:#6f6a5a;
+  --line:rgba(201,162,74,.32);--line2:rgba(201,162,74,.16);
+  --red:#d65a4e;--green:#62bb7c;--blue:#5f93da;--amber:#e3a63c;
+  --paper:#efe6cf;--paperInk:#231c12;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+html{background:#0a120d}
+body{
+  background:
+    radial-gradient(ellipse at 50% -10%,rgba(201,162,74,.18),transparent 55%),
+    repeating-linear-gradient(90deg,rgba(255,255,255,.012) 0 2px,transparent 2px 46px),
+    linear-gradient(180deg,#0f1c15,#0a120d 60%,#080e0a);
+  background-attachment:fixed;
+  color:var(--ink);
+  font-family:"Hiragino Mincho ProN","Yu Mincho","YuMincho","Noto Serif JP","Noto Serif CJK JP","Source Han Serif JP",serif;
+  min-height:100vh;
+  font-variant-numeric:tabular-nums;
+  line-height:1.55;
+}
+.sans{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic","Noto Sans JP",system-ui,sans-serif}
+#app{max-width:480px;margin:0 auto;padding:12px 14px calc(96px + env(safe-area-inset-bottom));}
+.screen{display:none;animation:fadeIn .35s ease}
+.screen.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+h1,h2,h3{margin:0;font-weight:700;letter-spacing:.06em}
+button{font-family:inherit;color:inherit;cursor:pointer}
+.card{
+  position:relative;
+  background:linear-gradient(180deg,var(--panel2),var(--panel));
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:14px;
+  margin:12px 0;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.04),0 8px 20px rgba(0,0,0,.35);
+}
+.card::before,.card::after{
+  content:"";position:absolute;width:10px;height:10px;border-color:var(--gold);border-style:solid;opacity:.75
+}
+.card::before{top:5px;left:5px;border-width:1px 0 0 1px}
+.card::after{bottom:5px;right:5px;border-width:0 1px 1px 0}
+.card-title{
+  display:flex;align-items:center;justify-content:space-between;gap:8px;
+  font-size:14px;color:var(--gold2);letter-spacing:.12em;margin-bottom:10px;
+  padding-bottom:7px;border-bottom:1px solid var(--line2)
+}
+.card-title small{color:var(--muted);letter-spacing:0;font-size:11px}
+.btn{
+  display:block;width:100%;padding:14px 16px;border-radius:8px;
+  border:1px solid var(--gold);
+  background:linear-gradient(180deg,#d9b55e,#a9832f);
+  color:#1d1606;font-size:17px;font-weight:700;letter-spacing:.14em;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 4px 0 #5e4614,0 8px 18px rgba(0,0,0,.4);
+  transition:transform .08s,box-shadow .08s,filter .2s;
+}
+.btn:active{transform:translateY(3px);box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 1px 0 #5e4614}
+.btn:disabled{filter:grayscale(1) brightness(.55);cursor:not-allowed;transform:none}
+.btn.ghost{background:transparent;color:var(--gold2);box-shadow:none;border-color:var(--line);font-size:14px;padding:11px}
+.btn.small{padding:8px 10px;font-size:13px;letter-spacing:.05em;box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 2px 0 #5e4614}
+.btn.x{background:linear-gradient(180deg,#2a2a2a,#0d0d0d);color:#fff;border-color:#555;box-shadow:0 4px 0 #000,0 8px 18px rgba(0,0,0,.4)}
+.row{display:flex;gap:8px;align-items:center}
+.row>*{flex:1}
+.muted{color:var(--muted)}
+.up{color:var(--green)}
+.down{color:var(--red)}
+.flat{color:var(--dim)}
+.divider{text-align:center;color:var(--gold);letter-spacing:.3em;font-size:12px;margin:14px 0;opacity:.85}
+
+/* ---------- Title ---------- */
+#title{text-align:center;padding-top:20px}
+.crest{width:150px;height:150px;margin:6px auto 0;filter:drop-shadow(0 6px 18px rgba(201,162,74,.35))}
+.title-sub{font-size:12px;letter-spacing:.5em;color:var(--gold);margin-top:10px}
+.title-main{
+  font-size:46px;margin:6px 0 2px;letter-spacing:.18em;
+  background:linear-gradient(180deg,#fff3c8,#d9b25a 55%,#8f6a22);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  text-shadow:0 2px 0 rgba(0,0,0,.25)
+}
+.title-tag{font-size:14px;color:var(--ink);letter-spacing:.3em;opacity:.85}
+.title-desc{font-size:13px;color:var(--muted);margin:18px 6px 22px;line-height:1.9}
+.title-btns{display:grid;gap:12px;margin:0 8px}
+.best{font-size:12px;color:var(--muted);margin-top:16px}
+.namebox{margin:0 8px 14px;text-align:left}
+.namebox label{font-size:12px;color:var(--muted);display:block;margin-bottom:4px}
+.namebox input{
+  width:100%;padding:10px 12px;border-radius:6px;border:1px solid var(--line);
+  background:#0d1812;color:var(--ink);font-family:inherit;font-size:15px
+}
+
+/* ---------- Header ---------- */
+.hdr{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  padding:10px 12px;border:1px solid var(--line);border-radius:10px;
+  background:linear-gradient(180deg,#22392b,#16261d);
+}
+.hdr .y{font-size:20px;font-weight:700;letter-spacing:.05em}
+.hdr .t{font-size:12px;color:var(--gold2)}
+.hdr .r{text-align:right;font-size:12px;color:var(--muted)}
+.hdr .r b{color:var(--ink);font-size:14px}
+.term-dots{display:flex;gap:3px;margin-top:5px;justify-content:flex-end}
+.term-dots i{width:8px;height:8px;border-radius:2px;background:#2c4034;display:block}
+.term-dots i.done{background:var(--gold3)}
+.term-dots i.now{background:var(--gold2);box-shadow:0 0 6px var(--gold)}
+.term-dots i.elec{outline:1px solid var(--red);outline-offset:1px}
+
+/* ---------- Indicators ---------- */
+.ind-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ind{background:rgba(0,0,0,.18);border:1px solid var(--line2);border-radius:8px;padding:9px 10px}
+.ind .lbl{font-size:11px;color:var(--muted);display:flex;justify-content:space-between}
+.ind .val{font-size:21px;font-weight:700;margin-top:1px}
+.ind .val small{font-size:12px;color:var(--muted);font-weight:400;margin-left:2px}
+.ind .dl{font-size:11px}
+.bar{height:7px;background:#0b130e;border-radius:4px;overflow:hidden;margin-top:6px;border:1px solid rgba(255,255,255,.05)}
+.bar>i{display:block;height:100%;border-radius:4px;transition:width .6s ease}
+.rating{
+  display:inline-block;min-width:46px;text-align:center;padding:3px 8px;border-radius:5px;
+  font-weight:800;letter-spacing:.06em;font-size:18px;border:1px solid
+}
+.rt-good{color:#8fe0a6;border-color:#3e8a55;background:rgba(62,138,85,.15)}
+.rt-mid{color:#f0cb72;border-color:#8a6a26;background:rgba(201,162,74,.12)}
+.rt-bad{color:#ff8a7e;border-color:#8f3a32;background:rgba(214,90,78,.14)}
+
+/* ---------- Fields ---------- */
+.fld{display:grid;grid-template-columns:26px 74px 1fr 40px;align-items:center;gap:6px;margin:7px 0;font-size:13px}
+.fld .ic{font-size:17px;text-align:center}
+.fld .nm{letter-spacing:.04em}
+.fld .lv{text-align:right;font-weight:700}
+.fld .bar{margin:0;height:9px}
+
+/* ---------- Chart ---------- */
+.tabs{display:flex;gap:4px;overflow-x:auto;margin-bottom:8px;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{
+  flex:0 0 auto;padding:5px 10px;border-radius:14px;font-size:12px;
+  border:1px solid var(--line2);background:transparent;color:var(--muted)
+}
+.tab.on{background:var(--gold);color:#1d1606;border-color:var(--gold);font-weight:700}
+canvas.chart{width:100%;height:190px;display:block}
+.legend{display:flex;flex-wrap:wrap;gap:4px 10px;font-size:11px;color:var(--muted);margin-top:6px}
+.legend i{display:inline-block;width:10px;height:3px;margin-right:4px;vertical-align:middle}
+
+.forecast-line{font-size:13px;padding:10px 12px;border-radius:8px;border:1px dashed var(--line);background:rgba(0,0,0,.2)}
+.lastnews{font-size:12px;color:var(--muted);border-left:3px solid var(--gold3);padding:4px 10px;margin-top:8px}
+
+/* ---------- Budget ---------- */
+.tax-big{font-size:34px;font-weight:800;color:var(--gold2);text-align:center;line-height:1.1}
+.tax-big small{font-size:14px;color:var(--muted);font-weight:400}
+.tax-note{font-size:12px;text-align:center;margin-top:2px}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:30px;background:transparent;margin:0;touch-action:pan-y}
+input[type=range]:focus{outline:none}
+input[type=range]::-webkit-slider-runnable-track{
+  height:7px;border-radius:4px;
+  background:linear-gradient(90deg,var(--c,#c9a24a) 0,var(--c,#c9a24a) var(--p,50%),#26382d var(--p,50%));
+  border:1px solid rgba(0,0,0,.4)
+}
+input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none;width:24px;height:24px;border-radius:50%;margin-top:-9px;
+  background:radial-gradient(circle at 35% 30%,#fff1c2,#c99a38 60%,#7a5a1a);
+  border:2px solid #2b1f06;box-shadow:0 2px 6px rgba(0,0,0,.5)
+}
+input[type=range]::-moz-range-track{height:7px;border-radius:4px;background:#26382d}
+input[type=range]::-moz-range-progress{height:7px;border-radius:4px;background:var(--c,#c9a24a)}
+input[type=range]::-moz-range-thumb{
+  width:22px;height:22px;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,#fff1c2,#c99a38 60%,#7a5a1a);border:2px solid #2b1f06
+}
+.scale{display:flex;justify-content:space-between;font-size:10px;color:var(--dim);margin-top:-2px}
+.stack{display:flex;height:16px;border-radius:5px;overflow:hidden;border:1px solid rgba(0,0,0,.5);background:#0b130e}
+.stack i{display:block;height:100%;transition:width .2s}
+.total{display:flex;justify-content:space-between;align-items:center;margin:8px 0 2px;font-size:13px}
+.total b{font-size:18px}
+.presets{display:flex;gap:6px;margin:8px 0 4px;flex-wrap:wrap}
+.presets .btn{flex:1;min-width:30%}
+.al{padding:9px 0 6px;border-top:1px solid var(--line2)}
+.al:first-of-type{border-top:none}
+.al-h{display:flex;justify-content:space-between;align-items:baseline;font-size:13px}
+.al-h .nm{font-size:14px;font-weight:700}
+.al-h .lvp{font-size:11px;color:var(--muted);margin-left:6px}
+.al-h .pct{font-size:20px;font-weight:800;min-width:52px;text-align:right}
+.al-h .pd{font-size:11px;margin-left:4px;min-width:30px;display:inline-block;text-align:right}
+.al-c{display:grid;grid-template-columns:34px 1fr 34px;gap:6px;align-items:center}
+.pm{
+  height:32px;border-radius:6px;border:1px solid var(--line);background:#0f1b14;
+  font-size:18px;font-weight:700;color:var(--gold2);line-height:1
+}
+.pm:active{background:#203428}
+.al-f{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-top:-1px}
+.seg{display:grid;grid-template-columns:repeat(4,1fr);gap:5px}
+.seg button{
+  padding:9px 2px;border-radius:6px;border:1px solid var(--line);background:#0f1b14;font-size:12px;line-height:1.3
+}
+.seg button.on{background:linear-gradient(180deg,#d9b55e,#a9832f);color:#1d1606;font-weight:700;border-color:var(--gold)}
+.seg button:disabled{opacity:.35}
+.seg button small{display:block;font-size:10px;opacity:.8}
+.ledger{width:100%;border-collapse:collapse;font-size:13px}
+.ledger td{padding:5px 2px;border-bottom:1px dotted var(--line2)}
+.ledger td:last-child{text-align:right;font-weight:700}
+.ledger tr.sum td{border-top:1px solid var(--gold);border-bottom:none;font-size:15px;padding-top:8px}
+.ledger tr.sub td{color:var(--muted);font-size:12px}
+.sticky{
+  position:fixed;left:0;right:0;bottom:0;z-index:20;
+  padding:10px 14px calc(10px + env(safe-area-inset-bottom));
+  background:linear-gradient(180deg,rgba(12,21,16,.85),rgba(8,14,10,.98));
+  border-top:1px solid var(--line);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  display:none
+}
+.sticky.show{display:block}
+.sticky-in{max-width:452px;margin:0 auto;display:flex;gap:10px;align-items:center}
+.sticky .sum{flex:0 0 96px;text-align:center;font-size:11px;color:var(--muted);line-height:1.2}
+.sticky .sum b{display:block;font-size:22px}
+.sticky .btn{flex:1;padding:12px}
+.warn{font-size:12px;color:var(--amber);margin-top:6px}
+
+/* ---------- Report ---------- */
+.paper{
+  background:
+    repeating-linear-gradient(0deg,rgba(0,0,0,.025) 0 1px,transparent 1px 3px),
+    linear-gradient(180deg,#f3ead2,#e3d6b5);
+  color:var(--paperInk);border-radius:4px;padding:14px 14px 12px;margin:12px 0;
+  box-shadow:0 10px 24px rgba(0,0,0,.5);transform:rotate(-.4deg);
+  border:1px solid #b9a77c;
+}
+.paper .mast{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:3px double #3a2f1d;padding-bottom:4px}
+.paper .mast h3{font-size:22px;letter-spacing:.25em}
+.paper .mast span{font-size:10px}
+.paper .head{font-size:24px;font-weight:900;line-height:1.3;margin:10px 0 6px;letter-spacing:.02em}
+.paper .subs{display:grid;grid-template-columns:1fr 1fr;gap:8px;border-top:1px solid #6b5a3c;padding-top:7px}
+.paper .subs div{font-size:12px;font-weight:700;line-height:1.45}
+.paper .cmt{font-size:11px;margin-top:8px;border-top:1px dotted #6b5a3c;padding-top:6px;color:#4a3e2a}
+.event{display:flex;gap:10px;align-items:flex-start}
+.event .ei{font-size:34px;line-height:1}
+.event h4{margin:0 0 3px;font-size:15px}
+.event p{margin:0;font-size:13px;color:var(--ink)}
+.event.good{border-left:3px solid var(--green);padding-left:10px}
+.event.bad{border-left:3px solid var(--red);padding-left:10px}
+.event.neutral{border-left:3px solid var(--gold);padding-left:10px}
+.tag{display:inline-block;font-size:11px;padding:1px 6px;border-radius:9px;margin:4px 4px 0 0;border:1px solid var(--line2);color:var(--muted)}
+.dtable{width:100%;border-collapse:collapse;font-size:13px}
+.dtable td{padding:5px 2px;border-bottom:1px dotted var(--line2)}
+.dtable td:nth-child(2){text-align:right;font-weight:700}
+.dtable td:nth-child(3){text-align:right;width:84px;font-size:12px}
+
+/* ---------- Election ---------- */
+.elec-head{text-align:center;padding:10px 0 4px}
+.elec-head .n{font-size:13px;color:var(--gold2);letter-spacing:.3em}
+.elec-head h2{font-size:30px;margin-top:4px;letter-spacing:.2em}
+.cands{display:grid;grid-template-columns:1fr auto 1fr;gap:6px;align-items:center;margin-top:8px}
+.cand{text-align:center;padding:10px 6px;border-radius:8px;border:1px solid var(--line2);background:rgba(0,0,0,.2)}
+.cand .av{font-size:38px}
+.cand .pt{font-size:11px;color:var(--muted)}
+.cand .nm{font-size:14px;font-weight:700}
+.vs{font-size:20px;color:var(--gold);font-weight:900}
+.vote{margin:10px 0}
+.vote .vl{display:flex;justify-content:space-between;font-size:13px;margin-bottom:3px}
+.vote .bar{height:16px}
+.counter{text-align:center;font-size:13px;color:var(--muted);margin-top:4px}
+.stamp{
+  text-align:center;margin:16px auto 6px;font-size:34px;font-weight:900;letter-spacing:.2em;
+  padding:8px 18px;border:4px double;border-radius:8px;width:max-content;transform:rotate(-6deg) scale(0);
+  transition:transform .45s cubic-bezier(.2,1.6,.4,1)
+}
+.stamp.show{transform:rotate(-6deg) scale(1)}
+.stamp.win{color:#e2474a;border-color:#e2474a}
+.stamp.lose{color:#9aa3ad;border-color:#9aa3ad}
+.issue{font-size:13px;text-align:center;color:var(--ink);margin-top:10px}
+
+/* ---------- Ending ---------- */
+.end-title{text-align:center;padding-top:10px}
+.end-title .badge{font-size:64px;line-height:1.1}
+.end-title .tl{font-size:12px;color:var(--gold2);letter-spacing:.4em;margin-top:6px}
+.end-title h2{font-size:32px;margin:4px 0;letter-spacing:.14em;color:var(--gold2)}
+.end-title p{font-size:13px;color:var(--muted);margin:4px 10px}
+.score{text-align:center;font-size:52px;font-weight:900;color:var(--ink);margin:8px 0 0;line-height:1}
+.score small{font-size:16px;color:var(--muted)}
+.sc-row{display:grid;grid-template-columns:76px 1fr 44px;gap:8px;align-items:center;font-size:13px;margin:7px 0}
+.sc-row .bar{margin:0;height:10px}
+.sc-row b{text-align:right}
+
+/* ---------- Modal ---------- */
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:50;display:none;align-items:flex-end;justify-content:center}
+.modal.show{display:flex}
+.modal-in{
+  width:100%;max-width:480px;max-height:88vh;overflow:auto;
+  background:linear-gradient(180deg,#1f3527,#14231a);border:1px solid var(--gold);
+  border-radius:14px 14px 0 0;padding:16px 16px calc(18px + env(safe-area-inset-bottom));
+  animation:up .3s ease
+}
+@keyframes up{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
+.modal h3{color:var(--gold2);font-size:18px;margin-bottom:8px}
+.modal h4{color:var(--gold2);margin:14px 0 4px;font-size:14px}
+.modal p,.modal li{font-size:13px;line-height:1.75}
+.modal ul{padding-left:18px;margin:4px 0}
+.toast{
+  position:fixed;left:50%;top:14px;transform:translateX(-50%) translateY(-80px);z-index:60;
+  background:#2b1f06;border:1px solid var(--gold);color:var(--gold2);padding:8px 14px;border-radius:8px;
+  font-size:13px;transition:transform .3s;max-width:90vw
+}
+.toast.show{transform:translateX(-50%) translateY(0)}
+.foot{text-align:center;font-size:11px;color:var(--dim);margin-top:18px}
+.linkbtn{background:none;border:none;color:var(--muted);text-decoration:underline;font-size:12px;padding:6px}
+</style>
+</head>
+<body>
+<div id="app">
+
+  <!-- ===================== TITLE ===================== -->
+  <section id="title" class="screen active">
+    <svg class="crest" viewBox="0 0 160 160" aria-hidden="true">
+      <defs>
+        <linearGradient id="gg" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#fff0c0"/><stop offset=".55" stop-color="#d4aa50"/><stop offset="1" stop-color="#8a6420"/>
+        </linearGradient>
+      </defs>
+      <circle cx="80" cy="80" r="74" fill="none" stroke="url(#gg)" stroke-width="2"/>
+      <circle cx="80" cy="80" r="68" fill="none" stroke="url(#gg)" stroke-width=".8" stroke-dasharray="2 4"/>
+      <!-- scale -->
+      <rect x="77" y="34" width="6" height="78" rx="2" fill="url(#gg)"/>
+      <circle cx="80" cy="32" r="6" fill="url(#gg)"/>
+      <rect x="34" y="44" width="92" height="5" rx="2.5" fill="url(#gg)"/>
+      <line x1="40" y1="48" x2="28" y2="84" stroke="#d4aa50" stroke-width="1.3"/>
+      <line x1="40" y1="48" x2="52" y2="84" stroke="#d4aa50" stroke-width="1.3"/>
+      <line x1="120" y1="48" x2="108" y2="84" stroke="#d4aa50" stroke-width="1.3"/>
+      <line x1="120" y1="48" x2="132" y2="84" stroke="#d4aa50" stroke-width="1.3"/>
+      <path d="M24 84 Q40 98 56 84 Z" fill="url(#gg)"/>
+      <path d="M104 84 Q120 98 136 84 Z" fill="url(#gg)"/>
+      <path d="M58 122 Q80 108 102 122 L106 128 L54 128 Z" fill="url(#gg)"/>
+      <text x="40" y="80" text-anchor="middle" font-size="12" fill="#f5e3a8">¥</text>
+      <text x="120" y="80" text-anchor="middle" font-size="11" fill="#f5e3a8">民</text>
+    </svg>
+    <div class="title-sub">リーベル共和国 国家予算シミュレーション</div>
+    <h1 class="title-main">宰相の天秤</h1>
+    <div class="title-tag">〜 十六年の国家予算 〜</div>
+    <p class="title-desc">
+      あなたは小国リーベル共和国の新首相。<br>
+      税率を決め、限られた予算を六つの分野に配る。<br>
+      その一年一年の決断が、数年後の国の姿を形づくる。<br>
+      四度の総選挙を勝ち抜き、十六年の任期を全うせよ。
+    </p>
+    <div class="namebox">
+      <label for="pmName">首相の名前（任意）</label>
+      <input id="pmName" maxlength="12" placeholder="例：山田 太郎">
+    </div>
+    <div class="title-btns">
+      <button class="btn" id="btnStart">🏛️ 組閣して政権を始める</button>
+      <button class="btn ghost" id="btnContinue" style="display:none">📂 つづきから</button>
+      <button class="btn ghost" id="btnHowto">📖 遊び方</button>
+    </div>
+    <div class="best" id="bestScore"></div>
+    <div class="foot">任期：4年×4期＝16年 ／ 1ターン＝1年度</div>
+  </section>
+
+  <!-- ===================== DASHBOARD ===================== -->
+  <section id="dash" class="screen">
+    <div class="hdr" id="dashHdr"></div>
+
+    <div class="card">
+      <div class="card-title">🏛️ 国家指標 <small id="dashCountry">リーベル共和国</small></div>
+      <div class="ind-grid" id="indGrid"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📊 分野レベル <small>配分で育ち、削ると衰える</small></div>
+      <div id="fieldList"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📈 推移 <small>縦の赤点線＝総選挙</small></div>
+      <div class="tabs" id="chartTabs"></div>
+      <canvas class="chart" id="chart"></canvas>
+      <div class="legend" id="chartLegend"></div>
+    </div>
+
+    <div id="dashForecast"></div>
+    <div id="dashNews"></div>
+
+    <div style="margin-top:14px">
+      <button class="btn" id="btnToBudget">📜 本年度の予算編成へ</button>
+    </div>
+    <div style="text-align:center;margin-top:8px">
+      <button class="linkbtn" id="btnHowto2">遊び方</button>
+      <button class="linkbtn" id="btnQuit">タイトルへ戻る</button>
+    </div>
+  </section>
+
+  <!-- ===================== BUDGET ===================== -->
+  <section id="budget" class="screen">
+    <div class="hdr" id="budHdr"></div>
+
+    <div class="card">
+      <div class="card-title">💴 税率 <small>前年 <span id="taxPrev"></span>%</small></div>
+      <div class="tax-big"><span id="taxVal">25</span><small>%</small></div>
+      <input type="range" id="taxSlider" min="10" max="40" step="1">
+      <div class="scale"><span>10%</span><span>25%</span><span>40%</span></div>
+      <div class="tax-note" id="taxNote"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">⚖️ 歳出配分 <small>政策予算 <b id="polBudget"></b></small></div>
+      <div class="stack" id="allocStack"></div>
+      <div class="total"><span>配分合計</span><b id="allocTotal">100%</b></div>
+      <div class="presets">
+        <button class="btn ghost small" id="prEven">均等配分</button>
+        <button class="btn ghost small" id="prPrev">前年どおり</button>
+        <button class="btn ghost small" id="prFix">100%に補正</button>
+      </div>
+      <div id="allocRows"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🏦 国債 <small>借金で今年の予算を増やす</small></div>
+      <div class="seg" id="bondSeg"></div>
+      <div style="height:10px"></div>
+      <div class="card-title" style="font-size:13px;margin-bottom:8px">💰 繰上償還 <small>国庫の余剰で借金を返す</small></div>
+      <div class="seg" id="repaySeg"></div>
+      <div class="warn" id="bondWarn"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🧮 予測収支 <small>景気次第で実績は変わります</small></div>
+      <table class="ledger" id="ledger"></table>
+    </div>
+
+    <div style="text-align:center">
+      <button class="linkbtn" id="btnBudgetBack">← ダッシュボードに戻る</button>
+    </div>
+  </section>
+
+  <!-- ===================== REPORT ===================== -->
+  <section id="report" class="screen">
+    <div class="hdr" id="repHdr"></div>
+    <div class="paper" id="paper"></div>
+    <div id="repEvent"></div>
+    <div class="card">
+      <div class="card-title">🧾 決算 <small>単位：兆リーベ</small></div>
+      <table class="ledger" id="repLedger"></table>
+    </div>
+    <div class="card">
+      <div class="card-title">🏛️ 国家指標 <small>前年比</small></div>
+      <table class="dtable" id="repInd"></table>
+    </div>
+    <div class="card">
+      <div class="card-title">📊 分野レベル <small>前年比</small></div>
+      <table class="dtable" id="repFld"></table>
+    </div>
+    <button class="btn" id="btnRepNext">次へ ▶</button>
+  </section>
+
+  <!-- ===================== ELECTION ===================== -->
+  <section id="election" class="screen">
+    <div class="elec-head">
+      <div class="n" id="elecNo"></div>
+      <h2>🗳️ 総選挙</h2>
+      <div class="muted" style="font-size:12px">国民の審判が下る</div>
+    </div>
+    <div class="card">
+      <div class="cands">
+        <div class="cand"><div class="av">🎩</div><div class="pt">与党・共和協和党</div><div class="nm" id="candMe"></div></div>
+        <div class="vs">VS</div>
+        <div class="cand"><div class="av">📢</div><div class="pt" id="oppParty"></div><div class="nm" id="oppName"></div></div>
+      </div>
+      <div class="issue" id="elecIssue"></div>
+    </div>
+    <div class="card">
+      <div class="card-title">📺 開票速報 <small id="elecTurnout"></small></div>
+      <div class="vote"><div class="vl"><span>🔴 共和協和党（与党）</span><b id="vRul">0.0%</b></div><div class="bar"><i id="bRul" style="width:0;background:linear-gradient(90deg,#b8443a,#e2685d)"></i></div></div>
+      <div class="vote"><div class="vl"><span id="vOppLbl">🔵 野党</span><b id="vOpp">0.0%</b></div><div class="bar"><i id="bOpp" style="width:0;background:linear-gradient(90deg,#3a62a8,#6d98de)"></i></div></div>
+      <div class="vote"><div class="vl"><span>⚪ 諸派・無所属</span><b id="vOth">0.0%</b></div><div class="bar"><i id="bOth" style="width:0;background:#7c8389"></i></div></div>
+      <div class="counter" id="elecCounter">開票率 0%</div>
+      <div class="stamp" id="stamp"></div>
+      <p class="issue" id="elecResult"></p>
+    </div>
+    <button class="btn" id="btnElecNext" disabled>次へ ▶</button>
+  </section>
+
+  <!-- ===================== ENDING ===================== -->
+  <section id="ending" class="screen">
+    <div class="end-title">
+      <div class="badge" id="endBadge"></div>
+      <div class="tl" id="endLabel">称号</div>
+      <h2 id="endTitle"></h2>
+      <p id="endDesc"></p>
+    </div>
+    <div class="card">
+      <div class="card-title">🏅 総合スコア <small id="endYears"></small></div>
+      <div class="score"><span id="endScore">0</span><small> / 1000</small></div>
+      <div id="endBreak" style="margin-top:12px"></div>
+    </div>
+    <div class="card">
+      <div class="card-title">📋 最終国勢</div>
+      <table class="dtable" id="endStats"></table>
+    </div>
+    <div class="card">
+      <div class="card-title">📈 政権の軌跡</div>
+      <div class="tabs" id="endTabs"></div>
+      <canvas class="chart" id="endChart"></canvas>
+      <div class="legend" id="endLegend"></div>
+    </div>
+    <div style="display:grid;gap:12px">
+      <button class="btn x" id="btnShare">𝕏 結果をポストする</button>
+      <button class="btn" id="btnRetry">🔁 もう一度組閣する</button>
+      <button class="btn ghost" id="btnEndTitle">タイトルへ</button>
+    </div>
+  </section>
+</div>
+
+<!-- Sticky bar for budget -->
+<div class="sticky" id="sticky">
+  <div class="sticky-in">
+    <div class="sum">配分合計<b id="stTotal">100%</b></div>
+    <button class="btn" id="btnDecide">⚖️ この予算で決定</button>
+  </div>
+</div>
+
+<!-- How to -->
+<div class="modal" id="howto">
+  <div class="modal-in">
+    <h3>📖 遊び方</h3>
+    <p>あなたはリーベル共和国の首相です。<b>1ターン＝1年度</b>。毎年「予算編成 → 決算」を繰り返し、<b>4年ごとの総選挙</b>を勝ち抜いて<b>16年間</b>の任期満了を目指します。</p>
+    <h4>① 予算編成</h4>
+    <ul>
+      <li><b>税率（10〜40%）</b>：上げると税収は増えるが、幸福度・支持率・経済成長にマイナス。30%を超えると脱税・回避が増え、効率が落ちます。</li>
+      <li>税収から<b>固定費（年金・行政費）</b>を引いた残りが<b>政策予算</b>。これを6分野に配分します（合計100%で決定可）。</li>
+      <li><b>国債</b>を発行すると今年の予算が増えますが、借金は利子付きで残ります。</li>
+    </ul>
+    <h4>② 分野レベル（0〜100）</h4>
+    <ul>
+      <li>🏥 福祉：幸福度・支持率を支える。削りすぎると抗議デモ。</li>
+      <li>🎓 教育：<b>2〜3年遅れて</b>経済成長に効く。</li>
+      <li>🏗️ インフラ：経済と人口を伸ばし、災害被害を減らす。</li>
+      <li>🛡️ 軍事：低すぎると隣国に舐められ外交で不利。高すぎると周辺国が警戒。</li>
+      <li>🌳 環境：幸福度と人口の定着。低いと公害。</li>
+      <li>🔬 科学技術：成長率ボーナスと、ランダムな大発明。</li>
+    </ul>
+    <p>配分の多い分野は育ち、少ない分野は毎年少しずつ衰えます。予算編成画面で翌年の予測レベルが見られます。</p>
+    <h4>③ 財政と格付け</h4>
+    <ul>
+      <li>格付け（AAA〜CCC）は<b>国債残高÷GDP</b>で決まり、下がるほど金利が上昇。</li>
+      <li>国庫が赤字になると自動で国債が発行され、格付けが1段階下がります。</li>
+      <li>国庫に余剰があれば<b>繰上償還</b>で借金を返せます。</li>
+    </ul>
+    <h4>④ ゲームオーバー</h4>
+    <ul>
+      <li>総選挙で落選（与党得票が野党を下回る）</li>
+      <li>国債残高がGDPの150%を超えてデフォルト</li>
+      <li>支持率が0になり暴動</li>
+    </ul>
+    <h4>⑤ 評価</h4>
+    <p>16年完走時、GDP・人口・幸福度・財政健全性から総合スコアと称号が決まります。目指せ「伝説の宰相」。</p>
+    <p class="muted">💡 ヒント：税率25%前後でバランスよく配分すれば国は着実に育ちます。尖った配分は数年後に必ず副作用が出ます。</p>
+    <button class="btn" id="btnCloseHowto" style="margin-top:10px">閉じる</button>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+'use strict';
+/* ============================================================
+   宰相の天秤 〜十六年の国家予算〜
+   ============================================================ */
+const SHARE_URL = "https://saisho-no-tenbin.vercel.app";
+const GAME_NAME = "宰相の天秤";
+const COUNTRY = "リーベル共和国";
+const START_YEAR = 2027;
+const TOTAL_YEARS = 16;
+const SAVE_KEY = "saisho-tenbin-save-v1";
+const BEST_KEY = "saisho-tenbin-best-v1";
+
+// ==ENGINE START==
+const FIELDS = [
+  {id:'welfare', name:'福祉',     icon:'🏥', color:'#e07a7a'},
+  {id:'edu',     name:'教育',     icon:'🎓', color:'#6fa3e6'},
+  {id:'infra',   name:'インフラ', icon:'🏗️', color:'#d2a656'},
+  {id:'mil',     name:'軍事',     icon:'🛡️', color:'#9aa1b0'},
+  {id:'env',     name:'環境',     icon:'🌳', color:'#66c27c'},
+  {id:'sci',     name:'科学技術', icon:'🔬', color:'#ae8fe8'},
+];
+const FIELD_IDS = FIELDS.map(f => f.id);
+const FIELD_BY_ID = Object.fromEntries(FIELDS.map(f => [f.id, f]));
+
+// 格付け：国債残高/GDP の上限と、それに対応する市場金利
+const RATINGS = [
+  {r:'AAA', max:0.30, rate:0.010},
+  {r:'AA',  max:0.50, rate:0.015},
+  {r:'A',   max:0.70, rate:0.022},
+  {r:'BBB', max:0.90, rate:0.032},
+  {r:'BB',  max:1.10, rate:0.046},
+  {r:'B',   max:1.30, rate:0.065},
+  {r:'CCC', max:9.99, rate:0.090},
+];
+const DEBT_LIMIT = 1.5;               // 国債残高がGDPの150%を超えるとデフォルト
+const BOND_OPTIONS = [
+  {frac:0,    label:'発行なし'},
+  {frac:0.10, label:'小規模'},
+  {frac:0.20, label:'中規模'},
+  {frac:0.35, label:'大規模'},
+];
+const REPAY_OPTIONS = [
+  {frac:0,    label:'なし'},
+  {frac:0.25, label:'国庫の1/4'},
+  {frac:0.5,  label:'国庫の半分'},
+  {frac:1,    label:'国庫全額'},
+];
+const K_GROW = 5.3;    // 投資の効き
+const DECAY  = 0.10;   // 毎年の自然減衰率
+
+function clamp(v, a, b){ return Math.max(a, Math.min(b, v)); }
+
+function ratingIndexFor(ratio){
+  for (let i = 0; i < RATINGS.length; i++) if (ratio < RATINGS[i].max) return i;
+  return RATINGS.length - 1;
+}
+
+function snap(s){
+  return {
+    year: s.year - 1, gdp: s.gdp, pop: s.pop, happy: s.happy, approval: s.approval,
+    debt: s.debt, treasury: s.treasury, ratingIdx: s.ratingIdx,
+    levels: Object.assign({}, s.levels),
+  };
+}
+
+function newGame(name){
+  const alloc = {welfare:20, edu:17, infra:17, mil:14, env:16, sci:16};
+  const s = {
+    name: name || 'あなた',
+    year: 1,
+    tax: 25, lastTax: 25,
+    alloc: Object.assign({}, alloc),
+    prevAlloc: Object.assign({}, alloc),
+    levels: {welfare:56, edu:52, infra:54, mil:48, env:50, sci:47},
+    gdp: 100, pop: 520, happy: 55, approval: 58,
+    treasury: 10, debt: 40, avgRate: 0.015, ratingIdx: 1,
+    history: [],
+    elections: [],
+    over: null,
+    lastHeadline: null,
+    seenEvents: {},
+  };
+  s.ratingIdx = ratingIndexFor(s.debt / s.gdp);
+  s.history.push(snap(s));
+  return s;
+}
+
+function compliance(tax){ return 1 - Math.max(0, tax - 30) * 0.015; }
+function fixedCostRate(year){ return 0.08 + 0.001 * (year - 1); }
+
+function levelStep(L, x){
+  return clamp(L + K_GROW * x * (1 - L / 100) - DECAY * L, 0, 100);
+}
+
+/** 予算案からの予測 */
+function forecast(s, dec){
+  const comp = compliance(dec.tax);
+  const Rf = s.gdp * dec.tax / 100 * comp;              // 予測税収
+  const M = s.gdp * fixedCostRate(s.year);              // 固定費
+  const bond = Rf * dec.bondFrac;                       // 国債発行
+  const repay = Math.max(0, s.treasury) * dec.repayFrac;// 繰上償還
+  const shortfall = Math.max(0, M - Rf);                // 税収が固定費に届かない分
+  const S = Math.max(0, Rf - M) + bond;                 // 政策予算
+  const interest = s.debt * s.avgRate;                  // 利払い
+  const balance = Rf + bond - M - S - interest - repay; // 予測収支（国庫の増減）
+  const debtAfter = s.debt + bond - repay;
+  const perField = {}, x = {}, pred = {};
+  FIELD_IDS.forEach(id => {
+    perField[id] = S * (dec.alloc[id] || 0) / 100;
+    x[id] = perField[id] / s.gdp * 100;
+    pred[id] = levelStep(s.levels[id], x[id]);
+  });
+  const ratioAfter = debtAfter / s.gdp;
+  return {comp, Rf, M, bond, repay, shortfall, S, interest, balance, debtAfter, ratioAfter,
+          perField, x, pred, ratingIdxAfter: ratingIndexFor(ratioAfter)};
+}
+
+/* ---------------- 小イベント ---------------- */
+function lv(s, id){ return Math.round(s.levels[id]); }
+const EVENTS = [
+  {id:'pandemic', icon:'🦠', title:'新型感染症の流行', w:() => 1.0, run:(s) => {
+    const W = s.levels.welfare;
+    if (W >= 65) return {tone:'good', text:`感染症が国内に上陸。充実した医療・福祉体制が機能し、被害は最小限に抑えられた（福祉Lv${lv(s,'welfare')}）。`,
+      mods:{gdp:-0.5, happy:-1, approval:+4}};
+    const sev = clamp((85 - W) / 70, 0.3, 1.2);
+    return {tone:'bad', text:`感染症が拡大し病床が逼迫。手薄な医療体制が批判を浴び、経済活動も停滞した（福祉Lv${lv(s,'welfare')}）。`,
+      mods:{gdp:-2.6*sev, pop:-0.5*sev, happy:-7*sev, approval:-6*sev}};
+  }},
+  {id:'quake', icon:'🌋', title:'大地震の発生', w:() => 0.8, run:(s) => {
+    const I = s.levels.infra;
+    if (I >= 65) return {tone:'neutral', text:`マグニチュード7の地震が発生。耐震化された橋や建物が持ちこたえ、復旧は迅速だった（インフラLv${lv(s,'infra')}）。`,
+      mods:{gdp:-0.6, approval:+2, levels:{infra:-2}}};
+    const sev = clamp((90 - I) / 70, 0.35, 1.3);
+    return {tone:'bad', text:`大地震で老朽化した道路や橋が崩落。物流が寸断され、復旧には長い時間がかかりそうだ（インフラLv${lv(s,'infra')}）。`,
+      mods:{gdp:-2.8*sev, pop:-0.3*sev, happy:-4*sev, approval:-5*sev, levels:{infra:-6*sev}}};
+  }},
+  {id:'border', icon:'🚢', title:'隣国の領海侵犯', w:(s) => s.levels.mil < 30 ? 2.4 : s.levels.mil < 40 ? 1.6 : 0.6, run:(s) => {
+    const M = s.levels.mil;
+    if (M >= 55) return {tone:'good', text:`隣国艦船が領海に接近。即応した沿岸警備隊が毅然と対応し、艦船は撤退した（軍事Lv${lv(s,'mil')}）。`,
+      mods:{approval:+4, happy:+1}};
+    if (M >= 35) return {tone:'neutral', text:`隣国艦船が領海を侵犯。抗議声明は出したものの、対応の遅れが指摘された（軍事Lv${lv(s,'mil')}）。`,
+      mods:{approval:-2}};
+    return {tone:'bad', text:`隣国が領海内で示威行動。弱腰の対応に国民の不安が高まり、貿易交渉でも足元を見られた（軍事Lv${lv(s,'mil')}）。`,
+      mods:{approval:-8, happy:-3, gdp:-1.0}};
+  }},
+  {id:'invention', icon:'💡', title:'画期的な発明', w:(s) => Math.max(0, s.levels.sci - 50) / 12, run:(s) => {
+    const items = ['室温超伝導ケーブル','藻類バイオ燃料','量子暗号チップ','全自動農業ロボット','新型蓄電池','万能ワクチン基盤'];
+    const it = items[Math.floor(Math.random()*items.length)];
+    const boost = 1.2 + s.levels.sci * 0.02;
+    return {tone:'good', text:`国立研究所が「${it}」の開発に成功！ 世界中から投資が集まり、輸出が急拡大した（科技Lv${lv(s,'sci')}）。`,
+      mods:{gdp:+boost, approval:+3, happy:+2, levels:{sci:+2}}};
+  }},
+  {id:'typhoon', icon:'🌀', title:'超大型台風の上陸', w:() => 0.8, run:(s) => {
+    const sc = (s.levels.env + s.levels.infra) / 2;
+    if (sc >= 62) return {tone:'neutral', text:`記録的な台風が上陸。森林の保水力と堤防が洪水を防ぎ、被害は軽微だった。`,
+      mods:{gdp:-0.4, approval:+2}};
+    const sev = clamp((85 - sc) / 60, 0.3, 1.2);
+    return {tone:'bad', text:`台風で各地の河川が氾濫。乱開発された山林と古い堤防が被害を拡大させた。`,
+      mods:{gdp:-1.6*sev, happy:-4*sev, approval:-4*sev, pop:-0.15*sev}};
+  }},
+  {id:'ranking', icon:'📚', title:'国際学力ランキング発表', w:() => 0.7, run:(s) => {
+    const E = s.levels.edu;
+    if (E >= 65) return {tone:'good', text:`国際学力調査で過去最高の順位に躍進。「教育立国リーベル」と海外メディアも注目（教育Lv${lv(s,'edu')}）。`,
+      mods:{approval:+4, happy:+2}};
+    if (E >= 40) return {tone:'neutral', text:`国際学力調査の結果は中位。可もなく不可もない結果に、識者からは改革を求める声も（教育Lv${lv(s,'edu')}）。`,
+      mods:{}};
+    return {tone:'bad', text:`国際学力調査で過去最低を記録。教室の荒廃と教員不足が深刻だと報じられた（教育Lv${lv(s,'edu')}）。`,
+      mods:{approval:-5, happy:-2}};
+  }},
+  {id:'scandal', icon:'🗞️', title:'閣僚の汚職スキャンダル', w:() => 0.55, run:() => {
+    const who = ['運輸大臣','農務大臣','文化大臣','国土大臣'][Math.floor(Math.random()*4)];
+    return {tone:'bad', text:`${who}が業者から多額の献金を受けていたことが発覚。即日更迭したものの、政権への視線は厳しい。`,
+      mods:{approval:-6}};
+  }},
+  {id:'expo', icon:'🏟️', title:'国際博覧会の招致', w:(s) => s.levels.infra >= 60 ? 0.6 : 0.3, run:(s) => {
+    if (s.levels.infra >= 62) return {tone:'good', text:`整備された交通網が評価され、国際博覧会の開催地に選ばれた！ 観光客と投資が押し寄せる（インフラLv${lv(s,'infra')}）。`,
+      mods:{gdp:+1.3, approval:+4, happy:+2}};
+    return {tone:'bad', text:`国際博覧会の招致に失敗。会場へのアクセスの悪さが致命的だったと分析されている（インフラLv${lv(s,'infra')}）。`,
+      mods:{approval:-2}};
+  }},
+  {id:'recession', icon:'📉', title:'世界同時不況', w:() => 0.7, run:(s) => {
+    const res = (s.levels.sci + s.levels.edu) / 2;
+    const dmg = clamp(3.2 - res * 0.03, 0.6, 3.2);
+    return {tone: res >= 65 ? 'neutral' : 'bad',
+      text: res >= 65 ? `海外発の金融危機が直撃。それでも高い技術力と人材が輸出を支え、影響は限定的だった。`
+                      : `海外発の金融危機が直撃。主力産業の競争力が乏しく、輸出が大きく落ち込んだ。`,
+      mods:{gdp:-dmg, approval: res >= 65 ? -1 : -3, happy:-1}};
+  }},
+  {id:'tourism', icon:'✈️', title:'観光ブームの到来', w:(s) => s.levels.env >= 55 ? 1.0 : 0.3, run:(s) => {
+    if (s.levels.env >= 58) return {tone:'good', text:`美しい自然が海外SNSで話題に。観光客が倍増し、地方経済が潤った（環境Lv${lv(s,'env')}）。`,
+      mods:{gdp:+1.0, pop:+0.15, happy:+2, approval:+2}};
+    return {tone:'bad', text:`観光客は来たものの、汚れた川とゴミの山が拡散され国のイメージが失墜（環境Lv${lv(s,'env')}）。`,
+      mods:{approval:-2, gdp:-0.3}};
+  }},
+  {id:'braindrain', icon:'🧳', title:'頭脳流出', w:(s) => (s.levels.sci < 40 && s.levels.edu > 45) ? 1.3 : 0.25, run:(s) => {
+    if (s.levels.sci < 45) return {tone:'bad', text:`育てた若手研究者が次々と海外へ。国内の研究環境の貧しさが原因と指摘されている（科技Lv${lv(s,'sci')}）。`,
+      mods:{gdp:-0.8, pop:-0.15, levels:{edu:-2}}};
+    return {tone:'good', text:`海外の大手企業が引き抜きを図ったが、国内の研究環境に満足した人材の多くが残留を選んだ（科技Lv${lv(s,'sci')}）。`,
+      mods:{approval:+1}};
+  }},
+  {id:'protest', icon:'🪧', title:'福祉削減への抗議デモ', w:(s) => s.levels.welfare < 35 ? 2.2 : 0, run:(s) => {
+    return {tone:'bad', text:`年金・医療の切り下げに怒った市民数万人が議事堂前を埋め尽くした（福祉Lv${lv(s,'welfare')}）。`,
+      mods:{approval:-8, happy:-4}};
+  }},
+  {id:'smog', icon:'🏭', title:'大気汚染警報', w:(s) => s.levels.env < 35 ? 1.8 : 0, run:(s) => {
+    return {tone:'bad', text:`工業地帯で深刻なスモッグが発生。子育て世帯の国外移住が相次いでいる（環境Lv${lv(s,'env')}）。`,
+      mods:{happy:-6, pop:-0.4, approval:-4}};
+  }},
+  {id:'harvest', icon:'🌾', title:'記録的な豊作', w:() => 0.4, run:() => {
+    return {tone:'good', text:`天候に恵まれ、小麦とぶどうが記録的な豊作。食卓に笑顔が戻った。`,
+      mods:{gdp:+0.6, happy:+3, approval:+1}};
+  }},
+  {id:'summit', icon:'🤝', title:'地域外交サミット', w:() => 0.6, run:(s) => {
+    const M = s.levels.mil;
+    if (M < 30) return {tone:'bad', text:`サミットで隣国に終始押され、不利な通商条約を飲まされた。「舐められている」との声も（軍事Lv${lv(s,'mil')}）。`,
+      mods:{gdp:-0.9, approval:-4}};
+    if (M > 85) return {tone:'bad', text:`過剰な軍拡が警戒され、サミットで孤立。通商協議は不調に終わった（軍事Lv${lv(s,'mil')}）。`,
+      mods:{gdp:-1.0, approval:-2}};
+    return {tone:'good', text:`節度ある国防姿勢が信頼を集め、近隣諸国との自由貿易協定がまとまった（軍事Lv${lv(s,'mil')}）。`,
+      mods:{gdp:+0.8, approval:+2}};
+  }},
+  {id:'armsrace', icon:'🚨', title:'周辺国の対リーベル包囲網', w:(s) => s.levels.mil > 82 ? 1.6 : 0, run:(s) => {
+    return {tone:'bad', text:`急速な軍拡に周辺国が反発し、経済制裁を発動。輸出が急減した（軍事Lv${lv(s,'mil')}）。`,
+      mods:{gdp:-1.6, approval:-3, happy:-2}};
+  }},
+  {id:'bondpanic', icon:'🏦', title:'国債市場の動揺', w:(s) => (s.debt / s.gdp) > 0.9 ? 1.6 : 0, run:() => {
+    return {tone:'bad', text:`海外ファンドがリーベル国債を大量に売り浴びせ、長期金利が急騰。財政への不安が広がる。`,
+      mods:{rate:0.006, approval:-3}};
+  }},
+];
+
+function rollEvent(s, rnd){
+  if (rnd() > 0.68) return null;
+  const cands = EVENTS.map(e => ({e, w: Math.max(0, e.w(s))})).filter(c => c.w > 0);
+  const total = cands.reduce((a, c) => a + c.w, 0);
+  let p = rnd() * total;
+  for (const c of cands){
+    p -= c.w;
+    if (p <= 0){
+      const r = c.e.run(s, rnd);
+      return {id:c.e.id, icon:c.e.icon, title:c.e.title, tone:r.tone, text:r.text, mods:r.mods || {}};
+    }
+  }
+  return null;
+}
+
+/** 1年分を進める。s を変更し、決算レポートを返す */
+function simulateYear(s, dec, rnd){
+  rnd = rnd || Math.random;
+  const before = snap(s);
+  const prevTax = s.lastTax;
+  const f = forecast(s, dec);
+  const termIdx = Math.floor((s.year - 1) / 4);
+
+  // 1) 分野レベル更新
+  FIELD_IDS.forEach(id => { s.levels[id] = f.pred[id]; });
+
+  // 2) 小イベント
+  const ev = rollEvent(s, rnd);
+  const m = Object.assign({gdp:0, pop:0, happy:0, approval:0, rate:0, levels:{}}, ev ? ev.mods : {});
+  m.levels = m.levels || {};
+  Object.keys(m.levels).forEach(id => { s.levels[id] = clamp(s.levels[id] + m.levels[id], 0, 100); });
+  const L = s.levels;
+  const tax = dec.tax;
+
+  // 3) 経済成長
+  const eduLag = s.history[Math.max(0, s.history.length - 3)].levels.edu;  // 2〜3年前の教育
+  const parts = {};
+  parts.base = 1.3;
+  parts.edu = (eduLag - 50) * 0.045;
+  parts.infra = (L.infra - 50) * 0.04;
+  parts.sci = (L.sci - 50) * 0.03;
+  parts.tax = -(tax - 25) * 0.12;
+  parts.mood = (s.happy - 50) * 0.015;
+  parts.welfare = L.welfare < 30 ? -(30 - L.welfare) * 0.03 : 0;
+  parts.env = L.env < 25 ? -(25 - L.env) * 0.04 : 0;
+  parts.mil = L.mil < 25 ? -(25 - L.mil) * 0.05 : 0;
+  const dr0 = s.debt / s.gdp;
+  parts.debt = dr0 > 0.6 ? -(dr0 - 0.6) * 2.5 : 0;
+  parts.stim = dec.bondFrac * 1.4;
+  parts.short = f.shortfall > 0 ? -0.6 : 0;
+  parts.noise = (rnd() + rnd() - 1) * 0.9;
+  parts.event = m.gdp;
+  let g = Object.values(parts).reduce((a, b) => a + b, 0);
+  g = clamp(g, -9, 9);
+  s.gdp *= 1 + g / 100;
+
+  // 4) 人口
+  let pg = 0.15 + (L.infra - 50) * 0.008 + (L.env - 50) * 0.01 + (L.welfare - 50) * 0.008
+         + (s.happy - 55) * 0.015 + (rnd() - 0.5) * 0.15 + m.pop;
+  pg = clamp(pg, -4, 2.5);
+  s.pop *= 1 + pg / 100;
+
+  // 5) 幸福度
+  let ht = 28 + L.welfare * 0.25 + L.env * 0.15 + L.edu * 0.06 + L.infra * 0.06 - (tax - 25) * 0.9 + g * 1.2;
+  if (L.welfare < 35) ht -= (35 - L.welfare) * 0.9;
+  if (L.env < 32) ht -= (32 - L.env) * 0.85;
+  ht = clamp(ht, 0, 100);
+  s.happy = clamp(s.happy + (ht - s.happy) * 0.4 + m.happy, 0, 100);
+
+  // 6) 財政
+  const R = s.gdp * tax / 100 * f.comp;   // 実績税収
+  let tre = s.treasury + R + f.bond - f.M - f.S - f.interest - f.repay;
+  s.debt += f.bond - f.repay;
+  let auto = 0;
+  if (tre < 0){ auto = -tre; s.debt += auto; tre = 0; }
+  s.treasury = tre;
+  const oldIdx = s.ratingIdx;
+  const ratio = s.debt / s.gdp;
+  let idx = ratingIndexFor(ratio);
+  if (auto > 0.05) idx = Math.min(RATINGS.length - 1, idx + 1);
+  s.ratingIdx = idx;
+  s.avgRate += (RATINGS[idx].rate + m.rate - s.avgRate) * 0.35;
+
+  // 7) 支持率
+  const milFx = L.mil < 35 ? -(35 - L.mil) * 0.6 : (Math.min(L.mil, 70) - 35) * 0.05;
+  let at = 20 + s.happy * 0.6 + g * 2.5 + (L.welfare - 50) * 0.15 + milFx - (tax - 25) * 0.7 - termIdx * 2;
+  at = clamp(at, -30, 100);
+  let a = s.approval + (at - s.approval) * 0.45 + m.approval;
+  const taxJump = tax - prevTax;
+  if (taxJump > 0) a -= taxJump * 0.6;
+  if (taxJump < 0) a += (-taxJump) * 0.3;
+  if (idx > oldIdx) a -= 2 * (idx - oldIdx);
+  if (auto > 0.05) a -= 2;
+  s.approval = clamp(a, 0, 100);
+
+  // 8) 終了判定
+  let over = null;
+  if (ratio > DEBT_LIMIT) over = 'default';
+  else if (s.approval <= 0.5) { s.approval = 0; over = 'riot'; }
+  s.over = over;
+
+  // 記録
+  const fiscalYear = s.year;
+  s.lastTax = tax;
+  s.tax = tax;
+  s.prevAlloc = Object.assign({}, dec.alloc);
+  s.alloc = Object.assign({}, dec.alloc);
+  s.year += 1;
+  const after = snap(s);
+  s.history.push(after);
+  if (ev) s.seenEvents[ev.id] = (s.seenEvents[ev.id] || 0) + 1;
+
+  const rep = {
+    fiscalYear, dec: JSON.parse(JSON.stringify(dec)), f, R, auto, before, after, g, pg, ev, parts,
+    oldRating: oldIdx, newRating: idx, over, ratio, taxJump,
+  };
+  rep.headline = makeHeadline(rep, s);
+  s.lastHeadline = rep.headline.main;
+  return rep;
+}
+
+/* ---------------- 新聞見出し ---------------- */
+function makeHeadline(rep, s){
+  const subs = [];
+  const b = rep.before, a = rep.after;
+  const dA = a.approval - b.approval;
+  const pct = (v) => (v >= 0 ? '+' : '') + v.toFixed(1) + '%';
+  let main;
+  if (rep.over === 'default') main = '国家財政が破綻、デフォルト宣言';
+  else if (rep.over === 'riot') main = '首都で大規模暴動、政権は崩壊状態';
+  else if (rep.ev && rep.ev.tone !== 'neutral' && (Math.abs(rep.ev.mods.gdp || 0) >= 1.5 || Math.abs(rep.ev.mods.approval || 0) >= 6)) {
+    const map = {
+      pandemic:'感染症拡大、医療現場が悲鳴', quake:'大地震、各地で被害甚大', invention:'国産技術が世界を席巻',
+      expo:'国際博覧会の開催が決定！', protest:'議事堂前に数万人、福祉削減に抗議', recession:'世界不況が直撃、輸出急減',
+      armsrace:'周辺国が経済制裁を発動', border:'領海侵犯、政府の弱腰に批判', typhoon:'台風で河川氾濫、被害拡大',
+      scandal:'閣僚汚職発覚、内閣に激震', smog:'大気汚染警報、子育て世帯が国外へ',
+    };
+    main = map[rep.ev.id] || rep.ev.title;
+  }
+  else if (rep.g >= 3.5) main = `好景気に沸く、成長率${pct(rep.g)}`;
+  else if (rep.g <= -1.5) main = `景気後退、成長率${pct(rep.g)}に沈む`;
+  else if (rep.newRating > rep.oldRating) main = `国債格付け「${RATINGS[rep.newRating].r}」へ引き下げ`;
+  else if (rep.newRating < rep.oldRating) main = `国債格付け「${RATINGS[rep.newRating].r}」へ引き上げ`;
+  else if (rep.dec.bondFrac >= 0.35) main = '国債大量発行、財政規律に懸念の声';
+  else if (rep.taxJump >= 4) main = `増税断行、税率${rep.dec.tax}%に国民の悲鳴`;
+  else if (rep.taxJump <= -4) main = `大型減税、税率${rep.dec.tax}%に引き下げ`;
+  else if (dA >= 5) main = '内閣支持率が急上昇';
+  else if (dA <= -5) main = '支持率急落、政権に黄信号';
+  else if (rep.g >= 2) main = `堅調な成長続く、成長率${pct(rep.g)}`;
+  else main = '大きな波乱なく、予算は粛々と執行';
+
+  // サブ見出し
+  const top = FIELD_IDS.slice().sort((x, y) => rep.dec.alloc[y] - rep.dec.alloc[x])[0];
+  subs.push(`${FIELD_BY_ID[top].name}重視の予算、配分${rep.dec.alloc[top]}%`);
+  const dLv = FIELD_IDS.map(id => [id, a.levels[id] - b.levels[id]]).sort((x, y) => x[1] - y[1]);
+  if (dLv[0][1] <= -3) subs.push(`${FIELD_BY_ID[dLv[0][0]].name}水準の低下、関係者に危機感`);
+  else if (dLv[5][1] >= 3) subs.push(`${FIELD_BY_ID[dLv[5][0]].name}分野の充実ぶりに高評価`);
+  if (rep.auto > 0.05) subs.push(`国庫が底をつき、${rep.auto.toFixed(1)}兆の緊急借入`);
+  else if (rep.f.repay > 0.05) subs.push(`国債${rep.f.repay.toFixed(1)}兆を繰上償還`);
+  if (dA >= 3) subs.push(`支持率${a.approval.toFixed(0)}%に上昇`);
+  else if (dA <= -3) subs.push(`支持率${a.approval.toFixed(0)}%に下落`);
+  if (subs.length < 2) subs.push(`人口${a.pop.toFixed(0)}万人、${a.pop >= b.pop ? '増加続く' : '減少に転じる'}`);
+
+  // 識者コメント
+  let cmt;
+  const dr = a.debt / a.gdp;
+  if (dr > 1.1) cmt = '財政学者「このままでは数年以内に破綻の恐れ。歳出の抜本見直しが急務だ」';
+  else if (a.happy < 40) cmt = '社会学者「国民生活の疲弊は限界に近い。暮らしに直結する分野への投資を」';
+  else if (a.levels.mil < 25) cmt = '安全保障専門家「防衛力の空洞化は外交の場でも足元を見られる」';
+  else if (a.levels.welfare < 30) cmt = '市民団体代表「高齢者や子どもを切り捨てる政治は許されない」';
+  else if (a.levels.env < 30) cmt = '環境NGO「汚れた空気の国に人は住み続けない」';
+  else if (a.levels.edu < 35) cmt = '教育評論家「教育の衰えは、数年後の経済に必ず跳ね返る」';
+  else if (rep.g >= 3) cmt = 'エコノミスト「投資の果実が実り始めた。次は持続性が課題」';
+  else if (dr < 0.3) cmt = '市場関係者「リーベル国債は今や安全資産。財政運営は手堅い」';
+  else cmt = '政治評論家「大きな失点はないが、国の将来像をもっと示してほしい」';
+  return {main, subs: subs.slice(0, 4), cmt};
+}
+
+/* ---------------- 選挙 ---------------- */
+const OPP_PARTIES = ['民政改革党','国民連合','未来自由党','緑の共和会','保守刷新同盟','市民前進党'];
+const OPP_LEADERS = ['ヴァレンティン・ローゼ','エミリア・カーン','オスカー・ブラント','ソフィア・ミルナー','レオン・ハルトマン','クララ・ヴェーバー','ユリウス・ノイマン'];
+const ISSUE_TEXT = {welfare:'福祉切り捨て', edu:'教育軽視', infra:'老朽インフラ放置', mil:'弱腰の安全保障', env:'環境破壊', sci:'技術立国の失敗'};
+
+function electionOutlook(s){
+  const v = 50 + (s.approval - 50) * 0.85 + (s.happy - 55) * 0.2;
+  if (v >= 56) return {txt:'優勢', cls:'up'};
+  if (v >= 51) return {txt:'やや優勢', cls:'up'};
+  if (v >= 48) return {txt:'接戦', cls:'flat'};
+  if (v >= 44) return {txt:'やや劣勢', cls:'down'};
+  return {txt:'劣勢', cls:'down'};
+}
+
+function runElection(s, rnd){
+  rnd = rnd || Math.random;
+  const no = s.elections.length + 1;
+  // 争点
+  let issue;
+  const minF = FIELD_IDS.slice().sort((x, y) => s.levels[x] - s.levels[y])[0];
+  if (s.tax >= 33) issue = `「重税内閣を倒せ」`;
+  else if (s.debt / s.gdp > 0.9) issue = `「借金漬け財政」`;
+  else if (s.levels[minF] < 40) issue = `「${ISSUE_TEXT[minF]}」`;
+  else if (s.approval >= 60) issue = `「長期政権のおごり」`;
+  else issue = `「停滞からの転換」`;
+  const rawShare = 50 + (s.approval - 50) * 0.85 + (s.happy - 55) * 0.2 + (rnd() * 6 - 3);
+  const other = 6 + rnd() * 6;
+  const ruling = clamp(rawShare, 5, 95) * (100 - other) / 100;
+  const opp = 100 - other - ruling;
+  const res = {
+    no, ruling, opp, other,
+    win: ruling > opp,
+    party: OPP_PARTIES[Math.floor(rnd() * OPP_PARTIES.length)],
+    leader: OPP_LEADERS[Math.floor(rnd() * OPP_LEADERS.length)],
+    issue,
+    turnout: 52 + rnd() * 20,
+  };
+  s.elections.push({no, win:res.win, ruling:res.ruling, year:s.year - 1});
+  if (res.win) s.approval = clamp(s.approval + 5, 0, 100); // ハネムーン
+  else s.over = 'election';
+  return res;
+}
+
+/* ---------------- スコア ---------------- */
+function computeScore(s){
+  const gR = s.gdp / 100, pR = s.pop / 520, h = s.happy, dr = s.debt / s.gdp;
+  const econ = clamp((gR - 0.8) / 0.95 * 250, 0, 250);
+  const popu = clamp((pR - 0.85) / 0.30 * 250, 0, 250);
+  const happy = clamp((h - 20) / 60 * 250, 0, 250);
+  const fisc = clamp((1.2 - dr) / 1.2 * 200, 0, 200) + clamp(s.treasury / s.gdp * 500, 0, 50);
+  const served = s.history.length - 1;
+  let mult = 1;
+  if (s.over) mult = clamp(served / TOTAL_YEARS, 0.1, 1) * 0.75;
+  const parts = {econ, popu, happy, fisc};
+  const total = Math.round((econ + popu + happy + fisc) * mult);
+  return {total, parts, mult, served, gR, pR, dr};
+}
+
+const TITLES = [
+  {min:840, badge:'👑', name:'伝説の宰相', desc:'建国の父と並び称され、肖像は紙幣に刷られることになった。'},
+  {min:760, badge:'🏛️', name:'名宰相', desc:'後世の教科書に「黄金の十六年」として記される名政権。'},
+  {min:700, badge:'⚖️', name:'堅実な改革者', desc:'大きな失策なく国を確実に前進させた、信頼の宰相。'},
+  {min:610, badge:'📜', name:'及第点の首相', desc:'可もなく不可もなく、国は少しだけ良くなった。'},
+  {min:520, badge:'🪑', name:'凡庸な宰相', desc:'椅子は温めたが、国の形はほとんど変わらなかった。'},
+  {min:420, badge:'🌫️', name:'迷走内閣の長', desc:'右往左往の十六年。国民の記憶には混乱だけが残った。'},
+  {min:-1,  badge:'💀', name:'亡国の首相', desc:'国力は衰え、借金と不満だけが積み上がった。'},
+];
+const OVER_TITLES = {
+  election: {badge:'🥀', name:'志半ばの宰相', label:'総選挙で落選', desc:'国民は別の指導者を選んだ。政権の座を追われ、静かに議事堂を去る。'},
+  default:  {badge:'💸', name:'亡国の首相', label:'財政破綻（デフォルト）', desc:'国債は紙切れとなり、国家は国際通貨基金の管理下に置かれた。'},
+  riot:     {badge:'🔥', name:'革命に追われた首相', label:'暴動による政権崩壊', desc:'支持を完全に失い、怒れる群衆が議事堂を包囲。首相は国外へ逃れた。'},
+};
+function titleFor(score){ return TITLES.find(t => score >= t.min); }
+// ==ENGINE END==
+
+/* ============================================================
+   UI
+   ============================================================ */
+let S = null;          // ゲーム状態
+let D = null;          // 編成中の予算案
+let lastReport = null;
+let lastElection = null;
+let chartMetric = 'approval';
+let endMetric = 'gdp';
+
+const $ = (sel) => document.querySelector(sel);
+const fmt1 = (v) => (Math.round(v * 10) / 10).toFixed(1);
+const sign = (v, d = 1) => (v > 0 ? '+' : v < 0 ? '−' : '±') + Math.abs(v).toFixed(d);
+const dcls = (v, inv) => { if (Math.abs(v) < 0.05) return 'flat'; return (v > 0) !== !!inv ? 'up' : 'down'; };
+const yearLabel = (y) => `${START_YEAR + y - 1}年度`;
+const termOf = (y) => Math.floor((y - 1) / 4) + 1;
+const yInTerm = (y) => ((y - 1) % 4) + 1;
+const ratingCls = (i) => i <= 2 ? 'rt-good' : i <= 4 ? 'rt-mid' : 'rt-bad';
+
+function show(id){
+  document.querySelectorAll('.screen').forEach(e => e.classList.toggle('active', e.id === id));
+  $('#sticky').classList.toggle('show', id === 'budget');
+  window.scrollTo(0, 0);
+  if (id === 'dash') requestAnimationFrame(() => drawMainChart());
+  if (id === 'ending') requestAnimationFrame(() => drawEndChart());
+}
+function toast(msg){
+  const t = $('#toast'); t.textContent = msg; t.classList.add('show');
+  clearTimeout(toast._t); toast._t = setTimeout(() => t.classList.remove('show'), 2200);
+}
+function store(key, val){ try { if (val === null) localStorage.removeItem(key); else localStorage.setItem(key, JSON.stringify(val)); } catch(e){} }
+function load(key){ try { const v = localStorage.getItem(key); return v ? JSON.parse(v) : null; } catch(e){ return null; } }
+
+/* ---------- Header ---------- */
+function headerHTML(s, label){
+  const y = Math.min(s.year, TOTAL_YEARS);
+  const t = termOf(y), yt = yInTerm(y);
+  const left = TOTAL_YEARS - y + 1;
+  let dots = '';
+  for (let i = 1; i <= TOTAL_YEARS; i++){
+    const cls = i < y ? 'done' : i === y ? 'now' : '';
+    dots += `<i class="${cls} ${i % 4 === 0 && i < TOTAL_YEARS ? 'elec' : ''}"></i>`;
+  }
+  return `<div>
+      <div class="t">${label || `第${t}期 ${yt}年目`}</div>
+      <div class="y">${yearLabel(y)}</div>
+    </div>
+    <div class="r">首相 <b>${escapeHTML(s.name)}</b><br>残り任期 <b>${left}</b>年
+      <div class="term-dots">${dots}</div></div>`;
+}
+function escapeHTML(t){ return String(t).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+/* ---------- Dashboard ---------- */
+function gaugeColor(v){ return v >= 60 ? 'var(--green)' : v >= 40 ? 'var(--amber)' : 'var(--red)'; }
+
+function renderDash(){
+  const s = S;
+  $('#dashHdr').innerHTML = headerHTML(s);
+  const prev = s.history.length >= 2 ? s.history[s.history.length - 2] : s.history[0];
+  const dA = s.approval - prev.approval, dH = s.happy - prev.happy;
+  const dG = (s.gdp / prev.gdp - 1) * 100, dP = s.pop - prev.pop;
+  const dT = s.treasury - prev.treasury, dD = s.debt - prev.debt;
+  const limit = s.gdp * DEBT_LIMIT;
+  const dr = s.debt / s.gdp;
+  const hasPrev = s.history.length >= 2;
+  const dl = (v, txt, inv) => hasPrev ? `<span class="dl ${dcls(v, inv)}">${txt}</span>` : '<span class="dl flat">—</span>';
+  $('#indGrid').innerHTML = `
+    <div class="ind"><div class="lbl"><span>👥 支持率</span>${dl(dA, sign(dA))}</div>
+      <div class="val">${fmt1(s.approval)}<small>%</small></div>
+      <div class="bar"><i style="width:${s.approval}%;background:${gaugeColor(s.approval)}"></i></div></div>
+    <div class="ind"><div class="lbl"><span>😊 幸福度</span>${dl(dH, sign(dH))}</div>
+      <div class="val">${fmt1(s.happy)}<small>/100</small></div>
+      <div class="bar"><i style="width:${s.happy}%;background:${gaugeColor(s.happy)}"></i></div></div>
+    <div class="ind"><div class="lbl"><span>🏭 GDP</span>${dl(dG, sign(dG) + '%')}</div>
+      <div class="val">${fmt1(s.gdp)}<small>兆</small></div>
+      <div class="dl muted">建国時比 ×${(s.gdp / 100).toFixed(2)}</div></div>
+    <div class="ind"><div class="lbl"><span>🧑‍🤝‍🧑 人口</span>${dl(dP, sign(dP) + '万')}</div>
+      <div class="val">${fmt1(s.pop)}<small>万人</small></div>
+      <div class="dl muted">建国時比 ×${(s.pop / 520).toFixed(3)}</div></div>
+    <div class="ind"><div class="lbl"><span>💰 国庫</span>${dl(dT, sign(dT))}</div>
+      <div class="val">${fmt1(s.treasury)}<small>兆</small></div>
+      <div class="dl muted">平均金利 ${(s.avgRate * 100).toFixed(2)}%</div></div>
+    <div class="ind"><div class="lbl"><span>🏦 格付け</span><span class="dl muted">GDP比${(dr * 100).toFixed(0)}%</span></div>
+      <div class="val"><span class="rating ${ratingCls(s.ratingIdx)}">${RATINGS[s.ratingIdx].r}</span></div></div>
+    <div class="ind" style="grid-column:1/-1"><div class="lbl"><span>📕 国債残高</span>${dl(dD, sign(dD) + '兆', true)}</div>
+      <div class="val">${fmt1(s.debt)}<small>兆 ／ デフォルト上限 ${fmt1(limit)}兆</small></div>
+      <div class="bar"><i style="width:${clamp(s.debt / limit * 100, 0, 100)}%;background:${dr < 0.7 ? 'var(--green)' : dr < 1.1 ? 'var(--amber)' : 'var(--red)'}"></i></div></div>
+  `;
+  $('#fieldList').innerHTML = FIELDS.map(f => {
+    const v = s.levels[f.id], d = v - prev.levels[f.id];
+    return `<div class="fld"><span class="ic">${f.icon}</span><span class="nm">${f.name}</span>
+      <div class="bar"><i style="width:${v}%;background:${f.color}"></i></div>
+      <span class="lv">${Math.round(v)}<br><span class="dl ${dcls(d)}" style="font-size:10px;font-weight:400">${hasPrev ? sign(d) : ''}</span></span></div>`;
+  }).join('');
+
+  // 選挙情勢
+  const yt = yInTerm(s.year), t = termOf(s.year);
+  let fc = '';
+  if (t < 4){
+    const left = 4 - yt;
+    const o = electionOutlook(s);
+    fc = `<div class="forecast-line">🗳️ 第${t}回総選挙：${left === 0 ? '<b>本年度末に実施</b>' : `${yearLabel(t * 4)}末（本年度を含め残り<b>${left + 1}</b>年度）`}
+      ／ 現在の情勢 <b class="${o.cls}">${o.txt}</b></div>`;
+  } else {
+    fc = `<div class="forecast-line">🏁 最終任期。${yearLabel(TOTAL_YEARS)}末で任期満了となり、16年間の治世が評価されます。</div>`;
+  }
+  $('#dashForecast').innerHTML = fc;
+  $('#dashNews').innerHTML = s.lastHeadline ? `<div class="lastnews">📰 前年度：${escapeHTML(s.lastHeadline)}</div>` : '';
+  renderTabs('#chartTabs', chartMetric, (m) => { chartMetric = m; drawMainChart(); });
+  drawMainChart();
+}
+
+/* ---------- Chart ---------- */
+const METRICS = [
+  {id:'approval', name:'支持率'},
+  {id:'happy', name:'幸福度'},
+  {id:'gdp', name:'GDP'},
+  {id:'debt', name:'国債/GDP'},
+  {id:'pop', name:'人口'},
+  {id:'fields', name:'分野'},
+];
+function renderTabs(sel, cur, cb){
+  const el = $(sel);
+  el.innerHTML = METRICS.map(m => `<button class="tab ${m.id === cur ? 'on' : ''}" data-m="${m.id}">${m.name}</button>`).join('');
+  el.querySelectorAll('.tab').forEach(b => b.onclick = () => {
+    el.querySelectorAll('.tab').forEach(x => x.classList.toggle('on', x === b));
+    cb(b.dataset.m);
+  });
+}
+function drawMainChart(){ if (S) drawChart($('#chart'), $('#chartLegend'), S.history, chartMetric); }
+function drawEndChart(){ if (S) drawChart($('#endChart'), $('#endLegend'), S.history, endMetric); }
+
+function drawChart(canvas, legendEl, hist, metric){
+  const dpr = window.devicePixelRatio || 1;
+  const W = canvas.clientWidth || 320, H = canvas.clientHeight || 190;
+  canvas.width = W * dpr; canvas.height = H * dpr;
+  const ctx = canvas.getContext('2d');
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  ctx.clearRect(0, 0, W, H);
+  const pad = {l:38, r:10, t:10, b:22};
+  const pw = W - pad.l - pad.r, ph = H - pad.t - pad.b;
+
+  let series = [], ymin = 0, ymax = 100, unit = '', refLines = [];
+  const xs = hist.map(h => h.year);
+  if (metric === 'fields'){
+    series = FIELDS.map(f => ({color:f.color, name:f.name, data:hist.map(h => h.levels[f.id])}));
+  } else {
+    const map = {
+      approval: {d:hist.map(h => h.approval), c:'#e6c878', n:'支持率', u:'%'},
+      happy:    {d:hist.map(h => h.happy), c:'#7fd39a', n:'幸福度', u:''},
+      gdp:      {d:hist.map(h => h.gdp), c:'#e6a65a', n:'GDP（兆）', u:''},
+      debt:     {d:hist.map(h => h.debt / h.gdp * 100), c:'#e0766b', n:'国債残高／GDP（%）', u:'%'},
+      pop:      {d:hist.map(h => h.pop), c:'#7fb2e6', n:'人口（万人）', u:''},
+    }[metric];
+    series = [{color:map.c, name:map.n, data:map.d}];
+    unit = map.u;
+    if (metric === 'approval'){ refLines.push({v:50, c:'rgba(255,255,255,.25)', t:'50'}); }
+    if (metric === 'gdp' || metric === 'pop'){
+      const all = map.d; let lo = Math.min(...all), hi = Math.max(...all);
+      const span = Math.max(hi - lo, lo * 0.08);
+      ymin = Math.max(0, lo - span * 0.25); ymax = hi + span * 0.25;
+    }
+    if (metric === 'debt'){
+      ymin = 0; ymax = Math.max(160, Math.max(...map.d) + 10);
+      refLines.push({v:150, c:'rgba(214,90,78,.8)', t:'破綻150%'});
+    }
+  }
+  const X = (i) => pad.l + (i / TOTAL_YEARS) * pw;
+  const Y = (v) => pad.t + ph - ((v - ymin) / (ymax - ymin || 1)) * ph;
+
+  // grid
+  ctx.font = '10px sans-serif'; ctx.fillStyle = '#7d7764'; ctx.strokeStyle = 'rgba(201,162,74,.12)'; ctx.lineWidth = 1;
+  for (let k = 0; k <= 4; k++){
+    const v = ymin + (ymax - ymin) * k / 4, y = Y(v);
+    ctx.beginPath(); ctx.moveTo(pad.l, y); ctx.lineTo(W - pad.r, y); ctx.stroke();
+    ctx.textAlign = 'right'; ctx.fillText(v >= 100 ? Math.round(v) : v.toFixed(v < 10 ? 1 : 0), pad.l - 4, y + 3);
+  }
+  ctx.textAlign = 'center';
+  for (let i = 0; i <= TOTAL_YEARS; i += 4){ ctx.fillText(i === 0 ? '就任' : `${i}年`, X(i), H - 6); }
+  // election lines
+  ctx.setLineDash([3, 3]); ctx.strokeStyle = 'rgba(214,90,78,.55)';
+  [4, 8, 12].forEach(i => { ctx.beginPath(); ctx.moveTo(X(i), pad.t); ctx.lineTo(X(i), pad.t + ph); ctx.stroke(); });
+  refLines.forEach(r => {
+    ctx.strokeStyle = r.c; ctx.beginPath(); ctx.moveTo(pad.l, Y(r.v)); ctx.lineTo(W - pad.r, Y(r.v)); ctx.stroke();
+    ctx.fillStyle = r.c; ctx.textAlign = 'left'; ctx.fillText(r.t, pad.l + 3, Y(r.v) - 3);
+  });
+  ctx.setLineDash([]);
+  // series
+  series.forEach(se => {
+    if (series.length === 1 && se.data.length > 1){
+      const grad = ctx.createLinearGradient(0, pad.t, 0, pad.t + ph);
+      grad.addColorStop(0, se.color + '55'); grad.addColorStop(1, se.color + '00');
+      ctx.beginPath(); ctx.moveTo(X(xs[0]), Y(se.data[0]));
+      se.data.forEach((v, i) => ctx.lineTo(X(xs[i]), Y(v)));
+      ctx.lineTo(X(xs[xs.length - 1]), pad.t + ph); ctx.lineTo(X(xs[0]), pad.t + ph); ctx.closePath();
+      ctx.fillStyle = grad; ctx.fill();
+    }
+    ctx.strokeStyle = se.color; ctx.lineWidth = series.length > 1 ? 1.8 : 2.4; ctx.lineJoin = 'round';
+    ctx.beginPath();
+    se.data.forEach((v, i) => { const x = X(xs[i]), y = Y(v); i ? ctx.lineTo(x, y) : ctx.moveTo(x, y); });
+    ctx.stroke();
+    const li = se.data.length - 1;
+    ctx.fillStyle = se.color; ctx.beginPath(); ctx.arc(X(xs[li]), Y(se.data[li]), 3, 0, Math.PI * 2); ctx.fill();
+  });
+  if (series.length === 1){
+    const d = series[0].data, v = d[d.length - 1];
+    ctx.fillStyle = '#f0e8d3'; ctx.font = 'bold 11px sans-serif';
+    const x = X(xs[xs.length - 1]);
+    ctx.textAlign = x > W - 50 ? 'right' : 'left';
+    ctx.fillText((v >= 100 ? v.toFixed(0) : v.toFixed(1)) + unit, x + (x > W - 50 ? -6 : 6), Math.max(pad.t + 10, Y(v) - 6));
+  }
+  legendEl.innerHTML = series.map(s => `<span><i style="background:${s.color}"></i>${s.name}</span>`).join('');
+}
+
+/* ---------- Budget ---------- */
+function openBudget(){
+  D = {
+    tax: S.tax,
+    alloc: Object.assign({}, S.alloc),
+    bondFrac: 0,
+    repayFrac: 0,
+  };
+  $('#budHdr').innerHTML = headerHTML(S, `第${termOf(S.year)}期 ${yInTerm(S.year)}年目 ／ 予算編成`);
+  $('#taxPrev').textContent = S.lastTax;
+  const ts = $('#taxSlider'); ts.value = D.tax;
+  buildAllocRows();
+  buildSegs();
+  updateBudget();
+  show('budget');
+}
+
+function buildAllocRows(){
+  $('#allocRows').innerHTML = FIELDS.map(f => `
+    <div class="al" data-id="${f.id}">
+      <div class="al-h">
+        <span><span class="nm">${f.icon} ${f.name}</span><span class="lvp" id="lvp-${f.id}"></span></span>
+        <span><span class="pct" id="pct-${f.id}" style="color:${f.color}"></span><span class="pd" id="pd-${f.id}"></span></span>
+      </div>
+      <div class="al-c">
+        <button class="pm" data-d="-1" aria-label="${f.name}を減らす">−</button>
+        <input type="range" min="0" max="100" step="1" id="sl-${f.id}" style="--c:${f.color}" aria-label="${f.name}の配分">
+        <button class="pm" data-d="1" aria-label="${f.name}を増やす">＋</button>
+      </div>
+      <div class="al-f"><span id="amt-${f.id}"></span><span id="fx-${f.id}"></span></div>
+    </div>`).join('');
+  FIELDS.forEach(f => {
+    const sl = $('#sl-' + f.id);
+    sl.value = D.alloc[f.id];
+    sl.addEventListener('input', () => { D.alloc[f.id] = +sl.value; updateBudget(); });
+  });
+  $('#allocRows').querySelectorAll('.pm').forEach(b => {
+    let timer = null, rep = null;
+    const id = b.closest('.al').dataset.id;
+    const step = () => { D.alloc[id] = clamp(D.alloc[id] + (+b.dataset.d), 0, 100); $('#sl-' + id).value = D.alloc[id]; updateBudget(); };
+    const stop = () => { clearTimeout(timer); clearInterval(rep); timer = rep = null; };
+    b.addEventListener('pointerdown', (e) => { e.preventDefault(); step(); timer = setTimeout(() => { rep = setInterval(step, 70); }, 380); });
+    ['pointerup','pointerleave','pointercancel'].forEach(ev => b.addEventListener(ev, stop));
+  });
+}
+
+function buildSegs(){
+  const f0 = forecast(S, D);
+  $('#bondSeg').innerHTML = BOND_OPTIONS.map((o, i) =>
+    `<button data-i="${i}" class="${D.bondFrac === o.frac ? 'on' : ''}">${o.label}<small>${o.frac ? '+' + fmt1(f0.Rf * o.frac) + '兆' : '0兆'}</small></button>`).join('');
+  $('#bondSeg').querySelectorAll('button').forEach(b => b.onclick = () => {
+    D.bondFrac = BOND_OPTIONS[+b.dataset.i].frac; buildSegs(); updateBudget();
+  });
+  const canRepay = S.treasury >= 0.5;
+  $('#repaySeg').innerHTML = REPAY_OPTIONS.map((o, i) =>
+    `<button data-i="${i}" class="${D.repayFrac === o.frac ? 'on' : ''}" ${(!canRepay && o.frac > 0) ? 'disabled' : ''}>${o.label}<small>${fmt1(Math.max(0, S.treasury) * o.frac)}兆</small></button>`).join('');
+  $('#repaySeg').querySelectorAll('button').forEach(b => b.onclick = () => {
+    D.repayFrac = REPAY_OPTIONS[+b.dataset.i].frac; buildSegs(); updateBudget();
+  });
+}
+
+function allocTotal(){ return FIELD_IDS.reduce((a, id) => a + (D.alloc[id] || 0), 0); }
+
+function updateBudget(){
+  const f = forecast(S, D);
+  // tax
+  $('#taxVal').textContent = D.tax;
+  const ts = $('#taxSlider');
+  ts.style.setProperty('--p', ((D.tax - 10) / 30 * 100) + '%');
+  const tj = D.tax - S.lastTax;
+  let note;
+  if (D.tax <= 15) note = '<span class="down">税収不足。固定費すら賄えない恐れ</span>';
+  else if (D.tax <= 21) note = '<span class="up">国民は歓迎</span>／<span class="down">政策予算は乏しい</span>';
+  else if (D.tax <= 28) note = '<span class="muted">標準的な水準</span>';
+  else if (D.tax <= 33) note = '<span class="up">予算は潤沢</span>／<span class="down">幸福度・成長にマイナス</span>';
+  else note = '<span class="down">重税。脱税増で効率低下、不満が噴出</span>';
+  if (tj > 0) note += `<br><span class="down">前年から+${tj}%の増税：支持率に一時的な打撃</span>`;
+  else if (tj < 0) note += `<br><span class="up">前年から${tj}%の減税：支持率に追い風</span>`;
+  $('#taxNote').innerHTML = `予測税収 <b>${fmt1(f.Rf)}兆</b>${f.comp < 1 ? `（徴税効率${Math.round(f.comp * 100)}%）` : ''}<br>${note}`;
+
+  // alloc
+  const tot = allocTotal();
+  $('#polBudget').textContent = fmt1(f.S) + '兆';
+  $('#allocStack').innerHTML = FIELDS.map(fl => `<i style="width:${tot ? D.alloc[fl.id] / Math.max(100, tot) * 100 : 0}%;background:${fl.color}" title="${fl.name}"></i>`).join('');
+  const ok = tot === 100;
+  const totTxt = tot + '%';
+  $('#allocTotal').textContent = totTxt + (ok ? ' ✓' : tot > 100 ? `（${tot - 100}%超過）` : `（残り${100 - tot}%）`);
+  $('#allocTotal').className = ok ? 'up' : 'down';
+  $('#stTotal').textContent = totTxt;
+  $('#stTotal').className = ok ? 'up' : 'down';
+  $('#btnDecide').disabled = !ok;
+  FIELDS.forEach(fl => {
+    const id = fl.id, a = D.alloc[id], pd = a - S.prevAlloc[id];
+    $('#pct-' + id).textContent = a + '%';
+    const pdEl = $('#pd-' + id);
+    pdEl.textContent = pd === 0 ? '±0' : (pd > 0 ? '▲' : '▼') + Math.abs(pd);
+    pdEl.className = 'pd ' + (pd > 0 ? 'up' : pd < 0 ? 'down' : 'flat');
+    const sl = $('#sl-' + id);
+    if (+sl.value !== a) sl.value = a;
+    sl.style.setProperty('--p', a + '%');
+    const cur = S.levels[id], nx = f.pred[id], dv = nx - cur;
+    $('#lvp-' + id).innerHTML = `Lv${Math.round(cur)} → <b class="${dcls(dv)}">${Math.round(nx)}</b>`;
+    $('#amt-' + id).textContent = `${fmt1(f.perField[id])}兆`;
+    $('#fx-' + id).innerHTML = `<span class="${dcls(dv)}">${dv >= 0 ? '▲' : '▼'}${Math.abs(dv).toFixed(1)}</span>`;
+  });
+
+  // ledger
+  const r = (l, v, cls, sub) => `<tr class="${sub ? 'sub' : ''}"><td>${l}</td><td class="${cls || ''}">${v}</td></tr>`;
+  const ratAfter = RATINGS[f.ratingIdxAfter].r;
+  let html = '';
+  html += r('税収（予測）', fmt1(f.Rf) + '兆');
+  if (f.bond > 0) html += r('国債発行', '+' + fmt1(f.bond) + '兆', 'up');
+  html += r('固定費（年金・行政）', '−' + fmt1(f.M) + '兆', 'down');
+  html += r('政策予算（6分野へ配分）', '−' + fmt1(f.S) + '兆', 'down');
+  html += r('国債利払い', '−' + fmt1(f.interest) + '兆', 'down');
+  if (f.repay > 0) html += r('繰上償還', '−' + fmt1(f.repay) + '兆', 'down');
+  html += `<tr class="sum"><td>予測収支（国庫増減）</td><td class="${f.balance >= 0 ? 'up' : 'down'}">${sign(f.balance)}兆</td></tr>`;
+  html += r('年度末 国庫（予測）', fmt1(S.treasury + f.balance) + '兆', '', true);
+  html += r('年度末 国債残高（予測）', `${fmt1(f.debtAfter)}兆（GDP比${Math.round(f.ratioAfter * 100)}%）`, '', true);
+  html += r('予測格付け', `${RATINGS[S.ratingIdx].r} → ${ratAfter}${S.treasury + f.balance < 0 ? '（赤字補填で更に悪化の恐れ）' : ''}`, f.ratingIdxAfter > S.ratingIdx ? 'down' : '', true);
+  $('#ledger').innerHTML = html;
+
+  let warn = '';
+  if (f.shortfall > 0) warn = `⚠️ 税収が固定費を${fmt1(f.shortfall)}兆下回ります。政策予算はゼロになり、赤字は自動借入で補填されます。`;
+  else if (S.treasury + f.balance < 0) warn = `⚠️ 国庫が不足する見込み。不足分は自動で国債発行され、格付けが下がります。`;
+  else if (f.ratioAfter > 1.2) warn = `⚠️ 国債残高がGDPの${Math.round(f.ratioAfter * 100)}%に。150%を超えるとデフォルトです。`;
+  else if (D.bondFrac > 0) warn = `国債を発行すると今年の予算は増え短期的に景気も上向きますが、残高と利払いが増えます。`;
+  $('#bondWarn').textContent = warn;
+}
+
+function presetEven(){ const base = [17,17,17,17,16,16]; FIELD_IDS.forEach((id, i) => D.alloc[id] = base[i]); }
+function presetFix(){
+  const tot = allocTotal();
+  if (tot === 0){ presetEven(); return; }
+  const raw = FIELD_IDS.map(id => D.alloc[id] * 100 / tot);
+  const fl = raw.map(Math.floor);
+  let rest = 100 - fl.reduce((a, b) => a + b, 0);
+  const order = raw.map((v, i) => [v - fl[i], i]).sort((a, b) => b[0] - a[0]);
+  for (let k = 0; k < rest; k++) fl[order[k][1]]++;
+  FIELD_IDS.forEach((id, i) => D.alloc[id] = fl[i]);
+}
+
+function decide(){
+  if (allocTotal() !== 100) return;
+  lastReport = simulateYear(S, JSON.parse(JSON.stringify(D)));
+  if (!S.over) store(SAVE_KEY, S); else store(SAVE_KEY, null);
+  renderReport(lastReport);
+  show('report');
+}
+
+/* ---------- Report ---------- */
+function renderReport(rep){
+  const s = S, b = rep.before, a = rep.after;
+  $('#repHdr').innerHTML = headerHTML(Object.assign({}, s, {year: rep.fiscalYear}), `${yearLabel(rep.fiscalYear)} 決算報告`);
+  const hl = rep.headline;
+  $('#paper').innerHTML = `
+    <div class="mast"><h3>リーベル日報</h3><span>${yearLabel(rep.fiscalYear)} 決算特別号</span></div>
+    <div class="head">${escapeHTML(hl.main)}</div>
+    <div class="subs">${hl.subs.map(t => `<div>▪ ${escapeHTML(t)}</div>`).join('')}</div>
+    <div class="cmt">💬 ${escapeHTML(hl.cmt)}</div>`;
+
+  if (rep.ev){
+    const mods = rep.ev.mods, tags = [];
+    if (mods.gdp) tags.push(`成長率 ${sign(mods.gdp)}pt`);
+    if (mods.approval) tags.push(`支持率 ${sign(mods.approval)}`);
+    if (mods.happy) tags.push(`幸福度 ${sign(mods.happy)}`);
+    if (mods.pop) tags.push(`人口増加率 ${sign(mods.pop, 2)}pt`);
+    if (mods.rate) tags.push(`金利 +${(mods.rate * 100).toFixed(1)}%`);
+    if (mods.levels) Object.keys(mods.levels).forEach(id => tags.push(`${FIELD_BY_ID[id].name}Lv ${sign(mods.levels[id])}`));
+    $('#repEvent').innerHTML = `<div class="card"><div class="card-title">⚡ 今年の出来事</div>
+      <div class="event ${rep.ev.tone}"><div class="ei">${rep.ev.icon}</div><div><h4>${rep.ev.title}</h4><p>${rep.ev.text}</p>
+      <div>${tags.map(t => `<span class="tag">${t}</span>`).join('')}</div></div></div></div>`;
+  } else {
+    $('#repEvent').innerHTML = `<div class="card"><div class="card-title">⚡ 今年の出来事</div><p class="muted" style="margin:0;font-size:13px">特筆すべき事件はなく、穏やかな一年だった。</p></div>`;
+  }
+
+  const f = rep.f;
+  const bal = rep.R + f.bond - f.M - f.S - f.interest - f.repay;
+  const r = (l, v, cls, sub) => `<tr class="${sub ? 'sub' : ''}"><td>${l}</td><td class="${cls || ''}">${v}</td></tr>`;
+  let html = '';
+  html += r(`税収（税率${rep.dec.tax}%）`, fmt1(rep.R) + '兆');
+  html += r('　予算時の見込み', fmt1(f.Rf) + `兆（${sign(rep.R - f.Rf)}）`, '', true);
+  if (f.bond > 0) html += r('国債発行', '+' + fmt1(f.bond) + '兆', 'up');
+  html += r('固定費', '−' + fmt1(f.M) + '兆', 'down');
+  html += r('政策経費', '−' + fmt1(f.S) + '兆', 'down');
+  html += r('国債利払い', '−' + fmt1(f.interest) + '兆', 'down');
+  if (f.repay > 0) html += r('繰上償還', '−' + fmt1(f.repay) + '兆', 'down');
+  html += `<tr class="sum"><td>年度収支</td><td class="${bal >= 0 ? 'up' : 'down'}">${sign(bal)}兆</td></tr>`;
+  if (rep.auto > 0.05) html += r('⚠️ 赤字補填の緊急借入', '+' + fmt1(rep.auto) + '兆', 'down');
+  html += r('国庫残高', `${fmt1(b.treasury)} → <b>${fmt1(a.treasury)}</b>兆`, '', true);
+  html += r('国債残高', `${fmt1(b.debt)} → <b>${fmt1(a.debt)}</b>兆（GDP比${Math.round(a.debt / a.gdp * 100)}%）`, '', true);
+  html += r('格付け', `${RATINGS[rep.oldRating].r} → <b>${RATINGS[rep.newRating].r}</b>`, rep.newRating > rep.oldRating ? 'down' : rep.newRating < rep.oldRating ? 'up' : '', true);
+  $('#repLedger').innerHTML = html;
+
+  const row = (l, from, to, d, dtxt, inv) => `<tr><td>${l}</td><td>${to}</td><td class="${dcls(d, inv)}">${dtxt}</td></tr>`;
+  $('#repInd').innerHTML =
+    row('👥 支持率', b.approval, fmt1(a.approval) + '%', a.approval - b.approval, sign(a.approval - b.approval)) +
+    row('😊 幸福度', b.happy, fmt1(a.happy), a.happy - b.happy, sign(a.happy - b.happy)) +
+    row('🏭 GDP', b.gdp, fmt1(a.gdp) + '兆', rep.g, '成長率' + sign(rep.g) + '%') +
+    row('🧑‍🤝‍🧑 人口', b.pop, fmt1(a.pop) + '万人', a.pop - b.pop, sign(a.pop - b.pop) + '万') +
+    row('💰 国庫', b.treasury, fmt1(a.treasury) + '兆', a.treasury - b.treasury, sign(a.treasury - b.treasury)) +
+    row('📕 国債残高', b.debt, fmt1(a.debt) + '兆', a.debt - b.debt, sign(a.debt - b.debt), true) +
+    row('🏦 格付け', 0, RATINGS[rep.newRating].r, rep.oldRating - rep.newRating,
+      rep.newRating === rep.oldRating ? '据え置き' : rep.newRating < rep.oldRating ? '格上げ' : '格下げ');
+  $('#repFld').innerHTML = FIELDS.map(fl => {
+    const d = a.levels[fl.id] - b.levels[fl.id];
+    return row(`${fl.icon} ${fl.name}`, 0, `Lv${Math.round(a.levels[fl.id])}`, d, sign(d) + `（${rep.dec.alloc[fl.id]}%）`);
+  }).join('');
+
+  const btn = $('#btnRepNext');
+  if (rep.over) btn.textContent = '⚠️ 政権の結末へ';
+  else if (rep.fiscalYear === TOTAL_YEARS) btn.textContent = '🏁 任期満了 ─ 審判の時';
+  else if (rep.fiscalYear % 4 === 0) btn.textContent = '🗳️ 総選挙へ';
+  else btn.textContent = `次の年度（${yearLabel(rep.fiscalYear + 1)}）へ ▶`;
+}
+
+function afterReport(){
+  const rep = lastReport;
+  if (rep.over || rep.fiscalYear >= TOTAL_YEARS){ showEnding(); return; }
+  if (rep.fiscalYear % 4 === 0){ startElection(); return; }
+  renderDash(); show('dash');
+}
+
+/* ---------- Election ---------- */
+function startElection(){
+  const res = runElection(S);
+  lastElection = res;
+  $('#elecNo').textContent = `第${res.no}回 ／ ${yearLabel(lastReport.fiscalYear)}末`;
+  $('#candMe').textContent = S.name + '（現職）';
+  $('#oppParty').textContent = '野党・' + res.party;
+  $('#oppName').textContent = res.leader;
+  $('#vOppLbl').textContent = '🔵 ' + res.party;
+  $('#elecIssue').innerHTML = `📣 野党は${res.issue}を最大の争点に掲げ、政権交代を訴えている。<br><span class="muted" style="font-size:12px">投票直前の支持率 ${fmt1(S.approval - (res.win ? 5 : 0))}% ／ 幸福度 ${fmt1(S.happy)}</span>`;
+  $('#elecTurnout').textContent = `投票率 ${res.turnout.toFixed(1)}%`;
+  ['#bRul','#bOpp','#bOth'].forEach(sel => $(sel).style.width = '0');
+  ['#vRul','#vOpp','#vOth'].forEach(sel => $(sel).textContent = '0.0%');
+  const st = $('#stamp'); st.className = 'stamp'; st.textContent = '';
+  $('#elecResult').textContent = '';
+  $('#btnElecNext').disabled = true;
+  show('election');
+
+  const dur = 3400, t0 = performance.now();
+  // 序盤は接戦気味に揺らしながら最終値へ
+  const wob = Math.random() * 1000;
+  function frame(t){
+    const p = clamp((t - t0) / dur, 0, 1);
+    const e = 1 - Math.pow(1 - p, 2.2);
+    const noise = (1 - p) * Math.sin(t / 180 + wob) * 6;
+    const rv = clamp(res.ruling + noise, 0, 100) * e, ov = clamp(res.opp - noise, 0, 100) * e, xv = res.other * e;
+    $('#vRul').textContent = rv.toFixed(1) + '%'; $('#bRul').style.width = rv + '%';
+    $('#vOpp').textContent = ov.toFixed(1) + '%'; $('#bOpp').style.width = ov + '%';
+    $('#vOth').textContent = xv.toFixed(1) + '%'; $('#bOth').style.width = xv + '%';
+    $('#elecCounter').textContent = `開票率 ${Math.floor(p * 100)}%`;
+    if (p < 1) requestAnimationFrame(frame);
+    else {
+      $('#elecCounter').textContent = '開票率 100% ─ 全議席確定';
+      st.textContent = res.win ? '再選' : '落選';
+      st.classList.add(res.win ? 'win' : 'lose');
+      requestAnimationFrame(() => st.classList.add('show'));
+      $('#elecResult').innerHTML = res.win
+        ? `🎉 与党が過半数を確保！ ${S.name}内閣は第${res.no + 1}期へ。<br><span class="muted">選挙後のご祝儀で支持率+5</span>`
+        : `💔 ${res.party}が勝利し、${res.leader}氏が新首相に指名される見通し。`;
+      const btn = $('#btnElecNext');
+      btn.disabled = false;
+      btn.textContent = res.win ? `第${res.no + 1}期へ ▶` : '政権の結末へ';
+      store(SAVE_KEY, res.win ? S : null);
+    }
+  }
+  requestAnimationFrame(frame);
+}
+
+function afterElection(){
+  if (!lastElection.win){ showEnding(); return; }
+  renderDash(); show('dash');
+  toast(`🏛️ 第${termOf(S.year)}期 ${S.name}内閣、発足`);
+}
+
+/* ---------- Ending ---------- */
+function showEnding(){
+  store(SAVE_KEY, null);
+  const sc = computeScore(S);
+  let t;
+  if (S.over){
+    const o = OVER_TITLES[S.over];
+    t = {badge:o.badge, name:o.name, desc:o.desc, label:'政権崩壊 ─ ' + o.label};
+  } else {
+    const tt = titleFor(sc.total);
+    t = {badge:tt.badge, name:tt.name, desc:tt.desc, label:'16年の任期を全う ─ 称号'};
+  }
+  const best = load(BEST_KEY);
+  if (!best || sc.total > best.score) store(BEST_KEY, {score:sc.total, title:t.name});
+  $('#endBadge').textContent = t.badge;
+  $('#endLabel').textContent = t.label;
+  $('#endTitle').textContent = t.name;
+  $('#endDesc').textContent = t.desc;
+  $('#endYears').textContent = `在任 ${sc.served}年${S.over ? '（途中退陣：減点あり）' : ''}`;
+  const el = $('#endScore'); el.textContent = '0';
+  const t0 = performance.now();
+  (function anim(now){
+    const p = clamp((now - t0) / 1400, 0, 1);
+    el.textContent = Math.round(sc.total * (1 - Math.pow(1 - p, 3)));
+    if (p < 1) requestAnimationFrame(anim);
+  })(t0);
+  const br = [
+    ['🏭 経済', sc.parts.econ, 250, '#e6a65a'],
+    ['🧑‍🤝‍🧑 人口', sc.parts.popu, 250, '#7fb2e6'],
+    ['😊 幸福度', sc.parts.happy, 250, '#7fd39a'],
+    ['🏦 財政', sc.parts.fisc, 250, '#e6c878'],
+  ];
+  $('#endBreak').innerHTML = br.map(([n, v, mx, c]) =>
+    `<div class="sc-row"><span>${n}</span><div class="bar"><i style="width:${v / mx * 100}%;background:${c}"></i></div><b>${Math.round(v * sc.mult)}</b></div>`).join('')
+    + (sc.mult < 1 ? `<div class="muted" style="font-size:11px;text-align:right">途中退陣のため ×${sc.mult.toFixed(2)}</div>` : '');
+  const h0 = S.history[0];
+  const row = (l, v, c) => `<tr><td>${l}</td><td>${v}</td><td class="muted">${c}</td></tr>`;
+  $('#endStats').innerHTML =
+    row('🏭 GDP', fmt1(S.gdp) + '兆', `就任時×${sc.gR.toFixed(2)}`) +
+    row('🧑‍🤝‍🧑 人口', fmt1(S.pop) + '万人', `就任時×${sc.pR.toFixed(3)}`) +
+    row('😊 幸福度', fmt1(S.happy), `就任時 ${fmt1(h0.happy)}`) +
+    row('👥 支持率', fmt1(S.approval) + '%', `就任時 ${fmt1(h0.approval)}%`) +
+    row('📕 国債残高', fmt1(S.debt) + '兆', `GDP比${Math.round(sc.dr * 100)}%`) +
+    row('🏦 格付け', S.over === 'default' ? 'D' : RATINGS[S.ratingIdx].r, `就任時 ${RATINGS[h0.ratingIdx].r}`) +
+    row('🗳️ 総選挙', `${S.elections.filter(e => e.win).length}勝${S.elections.filter(e => !e.win).length}敗`, '') +
+    row('🥇 最も育てた分野', (() => { const id = FIELD_IDS.slice().sort((a, b) => S.levels[b] - S.levels[a])[0]; return `${FIELD_BY_ID[id].icon}${FIELD_BY_ID[id].name}`; })(), `Lv${Math.round(Math.max(...FIELD_IDS.map(i => S.levels[i])))}`);
+  renderTabs('#endTabs', endMetric, (m) => { endMetric = m; drawEndChart(); });
+  S._endTitle = t; S._endScore = sc;
+  show('ending');
+}
+
+function share(){
+  const sc = S._endScore, t = S._endTitle;
+  const rating = S.over === 'default' ? 'D' : RATINGS[S.ratingIdx].r;
+  const head = S.over
+    ? `${COUNTRY}の首相として${sc.served}年で政権崩壊…（${OVER_TITLES[S.over].label}）`
+    : `${COUNTRY}の首相として16年の任期を全うした！`;
+  const text = `【${GAME_NAME}】${head}\n称号：${t.badge}${t.name}\nスコア：${sc.total}点\nGDP×${sc.gR.toFixed(2)}／人口${fmt1(S.pop)}万人／幸福度${fmt1(S.happy)}／格付け${rating}\n#宰相の天秤 #国家予算シム`;
+  const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(SHARE_URL)}`;
+  window.open(url, '_blank', 'noopener');
+}
+
+/* ---------- Title ---------- */
+function refreshTitle(){
+  const sv = load(SAVE_KEY);
+  $('#btnContinue').style.display = sv && sv.history ? 'block' : 'none';
+  if (sv && sv.history) $('#btnContinue').textContent = `📂 つづきから（${yearLabel(Math.min(sv.year, TOTAL_YEARS))}）`;
+  const best = load(BEST_KEY);
+  $('#bestScore').textContent = best ? `🏅 自己ベスト：${best.score}点「${best.title}」` : '';
+}
+function startGame(){
+  const nm = ($('#pmName').value || '').trim() || 'あなた';
+  S = newGame(nm);
+  lastReport = null;
+  renderDash();
+  show('dash');
+  toast(`🏛️ 第1期 ${S.name}内閣、発足`);
+}
+
+/* ---------- Bind ---------- */
+$('#btnStart').onclick = startGame;
+$('#btnContinue').onclick = () => {
+  const sv = load(SAVE_KEY);
+  if (!sv){ refreshTitle(); return; }
+  S = sv; renderDash(); show('dash');
+};
+const openHow = () => $('#howto').classList.add('show');
+$('#btnHowto').onclick = openHow;
+$('#btnHowto2').onclick = openHow;
+$('#btnCloseHowto').onclick = () => $('#howto').classList.remove('show');
+$('#howto').addEventListener('click', (e) => { if (e.target.id === 'howto') $('#howto').classList.remove('show'); });
+$('#btnQuit').onclick = () => { if (confirm('タイトルへ戻りますか？（進行状況は自動保存されています）')){ refreshTitle(); show('title'); } };
+$('#btnToBudget').onclick = openBudget;
+$('#btnBudgetBack').onclick = () => { renderDash(); show('dash'); };
+$('#taxSlider').addEventListener('input', (e) => { D.tax = +e.target.value; buildSegs(); updateBudget(); });
+$('#prEven').onclick = () => { presetEven(); updateBudget(); };
+$('#prPrev').onclick = () => { D.alloc = Object.assign({}, S.prevAlloc); updateBudget(); };
+$('#prFix').onclick = () => { presetFix(); updateBudget(); };
+$('#btnDecide').onclick = decide;
+$('#btnRepNext').onclick = afterReport;
+$('#btnElecNext').onclick = afterElection;
+$('#btnShare').onclick = share;
+$('#btnRetry').onclick = () => { $('#pmName').value = S ? (S.name === 'あなた' ? '' : S.name) : ''; startGame(); };
+$('#btnEndTitle').onclick = () => { refreshTitle(); show('title'); };
+window.addEventListener('resize', () => {
+  if ($('#dash').classList.contains('active')) drawMainChart();
+  if ($('#ending').classList.contains('active')) drawEndChart();
+});
+refreshTitle();
+</script>
+</body>
+</html>
